@@ -1,0 +1,87 @@
+@import 'config.styl';
+
+/**
+ * style components
+ */
+.overflow-hidden {
+  overflow: hidden;
+}
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+/**
+ * Top Bar
+ */
+.topheader {
+  -webkit-user-select: none;
+  height: 0.66rem;
+  line-height: 0.66rem;
+  padding: 0 0.2rem;
+  position: relative;
+  background: $color-dark;
+  border-bottom: 2px solid darken($color-primary, 10%);
+  
+  * {
+    padding: 0;
+    margin: 0;
+    color: $color-primary;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .title {
+    font-size: 0.24rem;
+  }
+
+  .nav {
+    list-style-type: none !important;
+  }
+  .nav-item {
+    float: left;
+    margin-right: 0.2rem;
+    height: 0.66rem;
+    display: flex;
+    align-items: center;
+    a {
+      color: darken($color-white, 5%);
+    }
+    a:hover {
+      color: darken($color-white, 10%);
+    }
+    a:active {
+      color: darken($color-white, 15%);
+    }
+  }
+}
+
+/**
+ * textarea#input
+ */
+textarea {
+  width: 100%;
+  margin: 0;
+  padding: 3em 5em;
+  overflow: auto;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+  outline: none;
+  background: lighten(#283237, 3%);
+  color: $color-white;
+  position: absolute;
+  top: 66px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  resize: none;
+  z-index: 2;
+  font-size: 0.15rem;
+  cursor: text;
+}

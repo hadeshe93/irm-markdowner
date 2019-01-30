@@ -1,0 +1,63 @@
+// Base Color
+// --------------------------------------------------
+$color-primary = darken(#159957, 5%);
+$color-primary-invert = invert($color-primary);
+
+$color-main = #000000;
+$color-submain = lighten($color-main, 30%);
+$color-vice = lighten($color-main, 40%);
+$color-content = #222222;
+
+$color-white = #e0e0e0;
+$color-black = invert($color-white);
+$color-dark = #252E32;
+$color-grey = #9aa4a5;
+$color-grey-light = #f3f3f3;
+$color-grey-dark = #666666;
+
+$color-code = #e96900;
+$color-border = #ddd;
+$color-background = #fafafa;
+$color-link = darken(invert($color-primary), 20%);
+$color-link-hover = darken($color-link, 10%);
+$color-link-active = darken($color-link-hover, 10%);
+
+$color-disable = $color-grey-dark;
+
+$color-code-background = #f7f7f7;
+$color-code-foreground = #d73a49;
+
+// Typography
+// Font, line-height, and elements colors.
+// --------------------------------------------------
+// $font-family = Georgia, serif;
+// $font-family = -apple-system-font,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei",Arial,sans-serif;
+$font-family-chinese = Optima-Regular, PingFangTC-light;
+$font-family = $font-family-chinese, sans-serif;
+$font-family-monospace = consolas, Menlo, $font-family-chinese, monospace;
+
+
+// Code & Code Blocks
+// --------------------------------------------------
+$code-font-family               = $font-family-monospace
+$code-font-size                 = 0.13rem
+$code-border-radius             = 0.3rem
+$code-foreground                = $color-code-foreground
+$code-background                = $color-code-background
+
+
+// Unit
+// --------------------------------------------------
+$len-unit = 0.08rem;
+
+// Mixins
+// --------------------------------------------------
+reset() {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+boxshadow() {
+  box-shadow: 0 4px 10px rgba(0,0,0,.05), 0 0 1px rgba(0,0,0,.1);
+}

@@ -1,0 +1,52 @@
+{
+  "name": "irm-markdowner",
+  "version": "0.1.0",
+  "description": "A online markdown converter specially for Wechat Public formatting.",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=development && webpack-dev-server --host 0.0.0.0 --port 5014 --inline --hot --progress --config ./build/webpack.config.js",
+    "build": "NODE_ENV=production && webpack --progress --profile --color --display-modules --display-chunks --config ./build/webpack.production.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hadeshe93/irm-markdowner.git"
+  },
+  "keywords": [
+    "wechat",
+    "markdown",
+    "format"
+  ],
+  "author": "Hades <ironmax@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hadeshe93/irm-markdowner/issues"
+  },
+  "homepage": "https://github.com/hadeshe93/irm-markdowner",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "copy-webpack-plugin": "~4.0.1",
+    "vue": "^2.5.22"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.10.0",
+    "html-webpack-plugin": "^2.30.1",
+    "jsx-loader": "^0.13.2",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "url-loader": "^0.5.7",
+    "vue-loader": "^14.2.4",
+    "vue-template-compiler": "^2.5.22",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.9.7"
+  }
+}

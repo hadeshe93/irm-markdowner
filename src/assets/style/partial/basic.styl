@@ -1,0 +1,72 @@
+@import './config.styl';
+
+* {
+  reset();
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+dl {
+  list-style-type: none;
+}
+ul, ol {
+  list-style-position: inside;
+  ul, ol {
+    margin-left: 0;
+  }
+}
+ul {
+  list-style-type: square;
+}
+ol {
+  list-style-type: decimal;
+}
+
+::selection {
+  color: $color-white;
+  background-color: $color-dark;
+}
+
+html {
+  font-size: 100rem;
+}
+
+body {
+  line-height: 1.5;
+  font-family: $font-family;
+  color: $color-content;
+  background-color: $color-background;
+}
+
+h1, h2, h3 {
+  font-weight: bolder;
+}
+
+p {
+  font-size: 0.14rem;
+}
+
+a {
+  color: $color-main;
+  text-decoration: none;
+  font-family: $font-family;
+  font-size-adjust: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active, a.active {
+}
+
+hr {
+  border: 0;
+}
+
+iframe, video {
+  max-width: 100%;
+  margin: 1rem auto;
+  display: block;
+}
+
+
