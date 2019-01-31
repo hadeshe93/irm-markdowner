@@ -1,5 +1,10 @@
 @import 'config.styl';
 
+::selection {
+  background: #fde6ba;
+  color: #000;
+}
+
 /**
  * style components
  */
@@ -62,9 +67,9 @@
 }
 
 /**
- * textarea#input
+ * #input
  */
-textarea {
+#input {
   width: 100%;
   margin: 0;
   padding: 3em 5em;
@@ -84,4 +89,64 @@ textarea {
   z-index: 2;
   font-size: 0.15rem;
   cursor: text;
+}
+
+/**
+ * #output
+ */
+#output {
+  position: absolute;
+  top: 66px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  resize: none;
+  z-index: 1;
+  background: #EEE;
+  overflow: hidden;
+  .wrapper {
+    overflow-y: auto;
+    height: 100%;
+    margin: 20px auto;
+    background: #FFF;
+    padding: 1rem;
+    width: 800px;
+    padding-bottom: 100px;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/**
+ * .btn-group
+ */
+.btn-group {
+  .btn {
+    border: none;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .convert-button,
+  .copy-button {
+    position: absolute;
+    right: 160px;
+    z-index: 3;
+    top: 80px;
+    border-radius: 3px;
+    background-color: #3a6586;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .convert-button {
+    right: 30px;
+    background-color: #159957;
+    // border: 1px solid #159957;
+    color: #e4e4e4;
+  }
 }

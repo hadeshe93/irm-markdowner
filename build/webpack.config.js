@@ -1,18 +1,22 @@
-var path = require('path');
-var webpack = require('webpack');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const fs = require('fs');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin('[name]_css.[hash:8].css');
 const extractLESS = new ExtractTextPlugin('[name]_less.[hash:8].css');
 
-var ROOT_PATH = path.resolve(__dirname, '../');
-var SRC_PATH = path.resolve(ROOT_PATH, './src');
-var DIST_PATH = path.resolve(ROOT_PATH, './md');
-var ASSETS_PATH = path.resolve(SRC_PATH, './assets');
-var VIEWS_PATH = path.resolve(SRC_PATH, './views');
-var COMPONENTS_PATH = path.resolve(SRC_PATH, './components');
+const ROOT_PATH = path.resolve(__dirname, '../');
+const SRC_PATH = path.resolve(ROOT_PATH, './src');
+const DIST_PATH = path.resolve(ROOT_PATH, './md');
+const ASSETS_PATH = path.resolve(SRC_PATH, './assets');
+const VIEWS_PATH = path.resolve(SRC_PATH, './views');
+const COMPONENTS_PATH = path.resolve(SRC_PATH, './components');
+
+const THEMES = fs.readdirSync(path.resolve(ASSETS_PATH, 'style/themes/'));
+const PAGE_THEMES = fs.readdirSync(path.resolve(ASSETS_PATH, 'style/themes/'));
 
 module.exports = {
     //页面入口文件配置
@@ -83,6 +87,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            WPP_THEMES: JSON.stringify(THEMES),
+            WPP_PAGE_THEMES: JSON.stringify(PAGE_THEMES),
+        }),
         // 生成页面插件
         new HtmlWebpackPlugin({
             filename: 'index.html', //默认目录路径为output.publicPath
