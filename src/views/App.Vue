@@ -24,36 +24,46 @@
     <!-- 头部栏 END -->
 
     <!-- 行为按钮组 START -->
-    <div class="btn-group">
-      <button type="button" class="btn copy-button" ref="clipboarddBtn"
-        data-clipboard-action="copy" data-clipboard-target="#outputCtt"
-        v-show="status === APP_STATUS.PREVIEW">全选内容</button>
-      <button type="button" class="btn convert-button" 
-        v-show="status === APP_STATUS.PREVIEW"
-        @click="toggleAppStatus(APP_STATUS.EDIT)">返回编辑</button>
-      <button type="button" class="btn convert-button" 
-        v-show="status === APP_STATUS.EDIT"
-        @click="toggleAppStatus(APP_STATUS.PREVIEW)">预览效果</button>
+    <div class="tools-bar-wrapper">
+      <div class="tools-bar">
+        <!-- 代码主题选择组 -->
+        <div class="themes-group">
+          <div class="theme-wrapper" v-show="status === APP_STATUS.PREVIEW">
+            <label>代码主题选择：</label>
+            <select class="code-theme" v-model="codeTheme" 
+              @change="codeThemeChangedHandler(codeTheme)">
+              <option v-for="(theme, idx) in CODE_THEMES" :key="idx" :value="theme">
+                {{ theme }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <!-- 按钮组 -->
+        <div class="btn-group">
+          <button type="button" class="btn copy-button" ref="clipboarddBtn"
+            data-clipboard-action="copy" data-clipboard-target="#output"
+            v-show="status === APP_STATUS.PREVIEW">全选内容</button>
+          <button type="button" class="btn convert-button" 
+            v-show="status === APP_STATUS.PREVIEW"
+            @click="toggleAppStatus(APP_STATUS.EDIT)">返回编辑</button>
+          <button type="button" class="btn convert-button" 
+            v-show="status === APP_STATUS.EDIT"
+            @click="toggleAppStatus(APP_STATUS.PREVIEW)">预览效果</button>
+        </div>
+      </div>
     </div>
     <!-- 行为按钮组 END -->
 
     <!-- 编辑框 START -->
-    <textarea id="input" spellcheck="false" v-model="editorContent"
-      v-show="status === APP_STATUS.EDIT"
-      @input="editorContentChangedHandler(editorContent)"></textarea>
+    <div class="input-wrapper" v-show="status === APP_STATUS.EDIT">
+      <textarea id="input" spellcheck="false" v-model="editorContent"
+        @input="editorContentChangedHandler(editorContent)"></textarea>
+    </div>
     <!-- 编辑框 END -->
 
     <!-- 预览框 START -->
-    <div id="output" v-show="status === APP_STATUS.PREVIEW">
-      <div class="themes-config">
-        <div class="theme-wrapper">
-          <label>页面主题选择：</label><select class="page-theme"></select>
-        </div>
-        <div class="theme-wrapper">
-          <label>代码主题选择：</label><select class="code-theme"></select>
-        </div>
-      </div>
-      <div class="wrapper" id="outputCtt" v-html="previewContent"></div>
+    <div class="output-wrapper" v-show="status === APP_STATUS.PREVIEW">
+      <div id="output" v-html="previewContent"></div>
     </div>
     <!-- 预览框 END -->
   </div>
@@ -64,11 +74,15 @@
   // markdown 转换器
   import converter from '@SRC/plugins/converter';
   import codeThemes from '@SRC/plugins/codeThemes';
+  import '@ASSETS/scripts/google-code-prettify/run_prettify';
   // 剪贴板
   import Clipboard from 'clipboard';
 
   // 剪贴板实例容器
   let clipboard = null;
+
+  // 代码主题改变器
+  let codeThemeChanger = null;
 
   // 应用的当前状态
   const APP_STATUS = {
@@ -87,14 +101,26 @@
         editorContent: '',
         previewContent: '',
 
+        codeTheme: 'github-v2',
+
         APP_STATUS,
         status: APP_STATUS.EDIT,
       };
+    },
+    computed: {
+      CODE_THEMES () {
+        // 去除掉 '.css' 的后缀
+        return WPP_CODE_THEMES.map(theme => theme.slice(0, -4));
+      },
     },
     methods: {
       // 切换状态
       toggleAppStatus (status) {
         this.status = status;
+      },
+      // 代码主题改变回调
+      codeThemeChangedHandler (codeTheme) {
+        codeThemeChanger.update(codeTheme);
       },
       // 编辑器内容变化回调
       editorContentChangedHandler (editorContent) {
@@ -106,7 +132,6 @@
       },
     },
     created () {
-      console.log(WPP_THEMES);
       this.$http.get('/dist/demo.md', {
         params: { _t: +new Date() },
         responseType: 'text',
@@ -117,12 +142,13 @@
       });
     },
     mounted () {
-      // new codeThemes({
-      //   prefixUrl: './themes/'
-      // });
+      codeThemeChanger = new codeThemes({
+        prefixUrl: './themes/',
+        theme: this.codeTheme,
+      });
+
       clipboard = new Clipboard(this.$refs['clipboarddBtn']);
       clipboard.on('success', (e) => {
-        console.log('复制成功');
         this.$weui.toast('复制成功', 500);
         // console.info('Action:', e.action);
         // console.info('Text:', e.text);

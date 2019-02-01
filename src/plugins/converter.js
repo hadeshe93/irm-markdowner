@@ -1,6 +1,15 @@
 import showdown from 'showdown';
+import 'showdown-prettify';
+import './showdown-list';
 
 const converter = new showdown.Converter({
+    /**
+     * 扩展
+     */
+    extensions: [
+        'list',
+        'prettify',
+    ],
     /**
      * Enable support for setting image dimensions from within markdown syntax
      * ![foo](foo.jpg =100x80)     simple, assumes units are in px
@@ -16,7 +25,7 @@ const converter = new showdown.Converter({
     /**
      * Enable support for GFM code block style.
      */
-    ghCodeBlocks: true,
+    // ghCodeBlocks: true,
     /**
      * Enable support for tables syntax
      */
@@ -30,11 +39,12 @@ const converter = new showdown.Converter({
     /**
      * Prevents weird effects in live previews due to incomplete input
      */
-    smoothLivePreview: true,
+    // smoothLivePreview: true,
     /**
      * Parses line breaks as <br>, without needing 2 spaces at the end of the line (since v1.5.1)
      */
-    simpleLineBreaks: true,
+    // simpleLineBreaks: true,
+    completeHTMLDocument: true,
     /**
      * Enable emoji support. Ex: this is a :smile: emoji For more info on available emojis, see https://github.com/showdownjs/showdown/wiki/Emojis (since v.1.8.0)
      */

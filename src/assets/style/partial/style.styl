@@ -67,26 +67,38 @@
 }
 
 /**
- * #input
+ * input
  */
-#input {
-  width: 100%;
-  margin: 0;
-  padding: 3em 5em;
-  overflow: auto;
-  border: none;
-  font-family: inherit;
-  color: inherit;
-  outline: none;
-  background: lighten(#283237, 3%);
-  color: $color-white;
+.input-wrapper {
   position: absolute;
   top: 66px;
   left: 0;
   right: 0;
   bottom: 0;
-  resize: none;
   z-index: 2;
+  width: 100%;
+  margin: 0;
+  background: $color-secondary;
+
+  display: flex;
+  justify-content: center;
+}
+#input {
+  position: absolute;
+  width: 8rem;
+  height: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0.5rem;
+  bottom: 0;
+  overflow: auto;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+  outline: none;
+  background: $color-secondary;
+  color: $color-white;
+  resize: none;
   font-size: 0.15rem;
   cursor: text;
 }
@@ -94,22 +106,22 @@
 /**
  * #output
  */
-#output {
+.output-wrapper {
   position: absolute;
-  top: 66px;
+  top: 0.66rem;
   left: 0;
   right: 0;
   bottom: 0;
   resize: none;
   z-index: 1;
-  background: #EEE;
+  background: $color-secondary;
   overflow: hidden;
-  .wrapper {
+  #output {
     overflow-y: auto;
     height: 100%;
-    margin: 20px auto;
+    margin: 0.5rem auto 0;
     background: #FFF;
-    padding: 1rem;
+    padding: 0.3rem 0.5rem;
     width: 800px;
     padding-bottom: 100px;
     max-width: 100%;
@@ -120,33 +132,55 @@
 /**
  * .btn-group
  */
-.btn-group {
-  .btn {
-    border: none;
-    color: white;
-    padding: 5px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+.tools-bar-wrapper {
+  position: absolute;
+  z-index: 3;
+  top: 0.66rem;
+  left: 0;
+  right: 0;
+
+  .tools-bar {
+    width: 8rem;
+    margin: auto;
+    height: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .convert-button,
-  .copy-button {
-    position: absolute;
-    right: 160px;
-    z-index: 3;
-    top: 80px;
-    border-radius: 3px;
-    background-color: #3a6586;
-    cursor: pointer;
-    font-size: 14px;
+  .themes-group {
+    label {
+      color: darken($color-white, 5%);
+    }
   }
 
-  .convert-button {
-    right: 30px;
-    background-color: #159957;
-    // border: 1px solid #159957;
-    color: #e4e4e4;
+  /* 按钮组 */
+  .btn-group {
+    .btn {
+      border: none;
+      color: white;
+      padding: 5px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .convert-button,
+    .copy-button {
+      border-radius: 3px;
+      background-color: #3a6586;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .copy-button {
+      margin-right: 0.1rem;
+    }
+
+    .convert-button {
+      background-color: #159957;
+      color: #e4e4e4;
+    }
   }
 }

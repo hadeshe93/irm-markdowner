@@ -1,0 +1,195 @@
+@import "./partial/config.styl";
+
+// 文章内容样式
+postContentStyle() {
+    h1 {
+        font-size: 28px;
+    }
+    h2 {
+        font-size: 24px;
+        border-bottom: 0.5px solid $color-border;
+        margin: 24px 0 8px;
+        &::before {
+            // content: '#';
+            // margin-right: 0.08rem;
+        }
+    }
+    h3 {
+        font-size: 20px;
+    }
+    h4 {
+        font-size: 18px;
+    }
+    h5 {
+        font-size: 18px;
+    }
+    h5 {
+        font-size: 16px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        a {
+            color: $color-content;
+        }
+    }
+    a {
+        color: $color-link;
+    }
+    p {
+        margin: 24px 0;
+        font-size: 14px;
+        line-height: 24px;
+    }
+    ol {
+        list-style-type: decimal;
+    }
+    ul {
+        list-style-type: disc;
+    }
+    ol, ul {
+        display: block;
+        list-style-position: initial;
+        padding-left: 40px;
+        p {
+            font-size: 14px;
+        }
+    }
+    li {
+        font-size: 14px;
+    }
+
+    .list-item {
+        position: relative;
+        padding-left: 20px;
+        margin: 5px 0;
+        .list-item-prefix {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            top: 50%;
+            left: 6px;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            background: $color-black;
+        }
+    }
+
+    .mt0 {
+        margin-top: 0;
+    }
+    .mb0 {
+        margin-bottom: 0;
+    }
+    .mt5 {
+        margin-top: 5px;
+    }
+    .mb5 {
+        margin-bottom: 5px;
+    }
+
+    // 表格
+    div > table {
+        width: 100%;
+        margin: 16px 0;
+        thead {
+            background-color: $color-grey-light;
+            th {
+                padding: 5px;
+                min-width: 20px;
+                &:not(:last-child) {
+                    border-right: 1px solid $color-border;
+                }
+            }
+        }
+        tbody {
+            tr:nth-child(2n) {
+                background-color: $color-grey-light;
+            }
+            td {
+                padding: 5px;
+                vertical-align: text-top;
+                &:not(:last-child) {
+                    border-right: 1px solid $color-border;
+                }
+            }
+        }
+    }
+    // 例外表格
+    .highlight table {
+        th, td {
+            border: none !important;
+        }
+    }
+
+    section.table-wrapper {
+        font-family: $font-family;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        display: table;
+        width: 100%;
+        overflow: auto;
+        word-break: normal;
+        word-break: keep-all;
+        
+        thead, tbody, tr, th, td {
+            font-family: $font-family;
+        }
+
+        th {
+            font-weight: normal;
+        }
+        th, td {
+            padding: 5px 10px;
+            border: 1px solid #e9ebec;
+        }
+        tr:nth-child(2n) {
+            background-color: #f8f8f8;
+        }
+    }
+
+    // 引言
+    blockquote {
+        margin: 16px 0;
+        padding: 8px 16px;
+        border-left: 4px solid $color-grey;
+        background-color: $color-grey-light;
+        &, & p {
+            font-size: 14px;
+            color: lighten($color-content, 15%);
+        }
+        & > p {
+            margin: 0;
+        }
+    }
+}
+
+// 代码样式
+postCodeStyle() {
+    pre.prettyprint.prettyprinted {
+        border: none;
+        ol {
+            font-size: 12px;
+        }
+    }
+    pre.linenums {
+        padding-left: 5px;
+    }
+    code.prettyprint {
+        padding: 2px 4px;
+        font-size: 85%;
+        background: $color-code-bkg;
+        border-radius: 3px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+    code.prettyprint .pln {
+        color: $color-code;
+    }
+}
+
+#output {
+    postContentStyle();
+
+    postCodeStyle();
+}

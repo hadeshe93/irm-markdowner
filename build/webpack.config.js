@@ -15,8 +15,7 @@ const ASSETS_PATH = path.resolve(SRC_PATH, './assets');
 const VIEWS_PATH = path.resolve(SRC_PATH, './views');
 const COMPONENTS_PATH = path.resolve(SRC_PATH, './components');
 
-const THEMES = fs.readdirSync(path.resolve(ASSETS_PATH, 'style/themes/'));
-const PAGE_THEMES = fs.readdirSync(path.resolve(ASSETS_PATH, 'style/themes/'));
+const CODE_THEMES = fs.readdirSync(path.resolve(ASSETS_PATH, 'style/themes/'));
 
 module.exports = {
     //页面入口文件配置
@@ -88,8 +87,7 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            WPP_THEMES: JSON.stringify(THEMES),
-            WPP_PAGE_THEMES: JSON.stringify(PAGE_THEMES),
+            WPP_CODE_THEMES: JSON.stringify(CODE_THEMES),
         }),
         // 生成页面插件
         new HtmlWebpackPlugin({

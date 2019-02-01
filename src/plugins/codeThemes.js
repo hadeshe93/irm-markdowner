@@ -4,35 +4,36 @@ class CodeThemes {
             theme: 'github',
             id: 'codeThemeId',
         };
+        const PATH_STYLE_ID = 'PATCH_STYLE_ID';
+
         this.options = {
             ...DEFAULT_OPTIONS,
             ...options,
         };
+        this.link = null;
+        this.patchStyle = null;
         this.init(this.options);
     }
 
+    // 初始化
     init (options) {
         const head = document.querySelector('head');
         const link = document.createElement('link');
+
         link.rel = 'stylesheet';
         link.id = options.id;
-        link.href = options.prefixUrl + options.theme;
+        link.href = options.prefixUrl + options.theme + '.css';
+
         head.appendChild(link);
+
         this.link = link;
     }
 
+    // 更新
     update (theme) {
         const options = this.options;
-        this.link.href = options.prefixUrl + theme;
+        this.link.href = options.prefixUrl + theme + '.css';
     }
 }
-
-/**
- * new CodeThemes({
- *  theme: <string>,
- *  id: <string>,
- *  prefixUrl: <string>,
- * });
- */
 
 export default CodeThemes;

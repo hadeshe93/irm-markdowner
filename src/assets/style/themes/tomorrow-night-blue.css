@@ -10,7 +10,7 @@
 }
 
 /* Specify class=linenums on a pre to get line numbering */
-ol.linenums {
+pre.linenums, ol.linenums {
   margin-top: 0;
   margin-bottom: 0;
   color: #7285b7;
