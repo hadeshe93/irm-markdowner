@@ -44,7 +44,7 @@ const converter = new showdown.Converter({
      * Parses line breaks as <br>, without needing 2 spaces at the end of the line (since v1.5.1)
      */
     // simpleLineBreaks: true,
-    completeHTMLDocument: true,
+    // completeHTMLDocument: true,
     /**
      * Enable emoji support. Ex: this is a :smile: emoji For more info on available emojis, see https://github.com/showdownjs/showdown/wiki/Emojis (since v.1.8.0)
      */

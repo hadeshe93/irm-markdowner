@@ -3,42 +3,50 @@
 // 文章内容样式
 postContentStyle() {
     h1 {
-        font-size: 28px;
+        font-size: 24px;
     }
     h2 {
-        font-size: 24px;
+        font-size: 20px;
         border-bottom: 0.5px solid $color-border;
-        margin: 24px 0 8px;
+        padding-bottom: 8px;
         &::before {
             // content: '#';
             // margin-right: 0.08rem;
         }
     }
     h3 {
-        font-size: 20px;
+        font-size: 18px;
     }
     h4 {
-        font-size: 18px;
-    }
-    h5 {
-        font-size: 18px;
+        font-size: 17px;
     }
     h5 {
         font-size: 16px;
     }
+    h5 {
+        font-size: 15px;
+    }
+    h6 {
+        font-size: 15px;
+    }
     h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        line-height: 1.25;
+        margin: 24px 0 16px;
         a {
             color: $color-content;
         }
     }
+
     a {
         color: $color-link;
     }
     p {
-        margin: 24px 0;
+        margin: 0 0 20px;
         font-size: 14px;
         line-height: 24px;
     }
+
     ol {
         list-style-type: decimal;
     }
@@ -48,13 +56,28 @@ postContentStyle() {
     ol, ul {
         display: block;
         list-style-position: initial;
-        padding-left: 40px;
+        padding-left: 30px;
+        font-size: 14px;
+        font-family: $font-family;
+        color: $color-content;
         p {
-            font-size: 14px;
+            margin: 0;
         }
     }
-    li {
+
+    h1, h2, h3, h4, h5, h6, p, li, section {
+        color: $color-content;
+        font-family: $font-family;
+    }
+
+    .article-wrapper, .ol-wrapper, .ul-wrapper {
+        // font-size: inherit;
+        // font-family: inherit;
+        // color: inherit;
+
         font-size: 14px;
+        font-family: $font-family;
+        color: $color-content;
     }
 
     .list-item {
@@ -86,40 +109,12 @@ postContentStyle() {
         margin-bottom: 5px;
     }
 
-    // 表格
-    div > table {
-        width: 100%;
-        margin: 16px 0;
-        thead {
-            background-color: $color-grey-light;
-            th {
-                padding: 5px;
-                min-width: 20px;
-                &:not(:last-child) {
-                    border-right: 1px solid $color-border;
-                }
-            }
-        }
-        tbody {
-            tr:nth-child(2n) {
-                background-color: $color-grey-light;
-            }
-            td {
-                padding: 5px;
-                vertical-align: text-top;
-                &:not(:last-child) {
-                    border-right: 1px solid $color-border;
-                }
-            }
-        }
-    }
-    // 例外表格
-    .highlight table {
-        th, td {
-            border: none !important;
-        }
+    // 链接文字
+    .text-link {
+        color: $color-link;
     }
 
+    // 表格
     section.table-wrapper {
         font-family: $font-family;
     }

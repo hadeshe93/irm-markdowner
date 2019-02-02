@@ -4,15 +4,37 @@ GitHub 地址：[https://github.com/ironmaxtory/wechat-markdowner](https://githu
 
 > 使用微信公众号编辑器有一个十分头疼的问题——粘贴出来的代码，格式错乱，而且特别丑。这块编辑器能够解决这个问题。
 
-## Changelog
-
-- 支持页面主题样式配置
-- 支持更换代码样式主题
+## Features
+- 支持不同代码样式主题
 - 代码长度溢出时横向滚动
 - 支持 Webpack 调试
-- 新增 Material Dark 代码样式主题
-- 兼容手机显示 <sup style="color:#e4393c;">New</sup>
-- Fix初始化页面没有加载样式 <sup style="color:#e4393c;">New</sup>
+- 仅支持两层嵌套的 ul 和 ol
+- 新增 Material Dark 代码样式主题<sup style="color:#e4393c;">New</sup>
+- 支持 emoji 表情<sup style="color:#e4393c;">New</sup>
+
+## 列表嵌套
+1. lorem
+    - 123
+2. lorem
+3. lorem
+
+## Emoji 表情
+:1st_place_medal: :2nd_place_medal: :3rd_place_medal: :astonished: :avocado:
+
+## 二级标题
+Aliqua aliqua id pariatur officia ipsum est. Ipsum velit irure exercitation mollit labore est nostrud exercitation dolor qui incididunt. Aute exercitation officia magna do sit do labore ad laboris aute laborum dolor nostrud sint. Duis cupidatat ex dolore magna commodo laborum. Qui aliquip ea eiusmod esse incididunt aliqua non labore voluptate. Veniam ad eu adipisicing dolore consequat veniam. Voluptate enim Lorem in consequat deserunt.
+
+### 三级标题
+Aliqua aliqua id pariatur officia ipsum est. Ipsum velit irure exercitation mollit labore est nostrud exercitation dolor qui incididunt. Aute exercitation officia magna do sit do labore ad laboris aute laborum dolor nostrud sint. Duis cupidatat ex dolore magna commodo laborum. Qui aliquip ea eiusmod esse incididunt aliqua non labore voluptate. Veniam ad eu adipisicing dolore consequat veniam. Voluptate enim Lorem in consequat deserunt.
+
+#### 四级标题
+Aliqua aliqua id pariatur officia ipsum est. Ipsum velit irure exercitation mollit labore est nostrud exercitation dolor qui incididunt. Aute exercitation officia magna do sit do labore ad laboris aute laborum dolor nostrud sint. Duis cupidatat ex dolore magna commodo laborum. Qui aliquip ea eiusmod esse incididunt aliqua non labore voluptate. Veniam ad eu adipisicing dolore consequat veniam. Voluptate enim Lorem in consequat deserunt.
+
+##### 五级标题
+Aliqua aliqua id pariatur officia ipsum est. Ipsum velit irure exercitation mollit labore est nostrud exercitation dolor qui incididunt. Aute exercitation officia magna do sit do labore ad laboris aute laborum dolor nostrud sint. Duis cupidatat ex dolore magna commodo laborum. Qui aliquip ea eiusmod esse incididunt aliqua non labore voluptate. Veniam ad eu adipisicing dolore consequat veniam. Voluptate enim Lorem in consequat deserunt.
+
+###### 六级标题
+Aliqua aliqua id pariatur officia ipsum est. Ipsum velit irure exercitation mollit labore est nostrud exercitation dolor qui incididunt. Aute exercitation officia magna do sit do labore ad laboris aute laborum dolor nostrud sint. Duis cupidatat ex dolore magna commodo laborum. Qui aliquip ea eiusmod esse incididunt aliqua non labore voluptate. Veniam ad eu adipisicing dolore consequat veniam. Voluptate enim Lorem in consequat deserunt.
 
 ## 代码示例
 `html`代码
@@ -34,36 +56,11 @@ GitHub 地址：[https://github.com/ironmaxtory/wechat-markdowner](https://githu
 
 `js`代码：
 ```javascript
-var WechatMakdowner = {
-  init: function() {
-    var self = this;
-    self.load().then(function() {
-      self.start()
-    }).fail(function(){
-      self.start();
-    });
-  },
-  start: function() {
-    this.updateOutput();
-  },
-  load: function() {
-    return $.ajax({
-      type: 'GET',
-      url: params.path || './demo.md',
-      dateType: 'text',
-      timeout: 2000
-    }).then(function(data) {
-      $('#input').val(data);
-    });
-  },
-  updateOutput: function () {
-    var val = this.converter.makeHtml($('#input').val());
-    $('#output .wrapper').html(val);
-    PR.prettyPrint();
-  }
-};
+function sayHelloWorld (name) {
+  console.log('Hello world, ' + name);
+}
 
-WechatMakdowner.init();
+sayHelloWorld('Frank');
 ```
 ---
 
