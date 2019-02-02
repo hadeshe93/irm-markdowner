@@ -54,6 +54,9 @@
     </div>
     <!-- 行为按钮组 END -->
 
+    <!-- 操作框 START -->
+    <!-- 操作框 END -->
+
     <!-- 编辑框 START -->
     <div class="input-wrapper" v-show="status === APP_STATUS.EDIT">
       <textarea id="input" spellcheck="false" v-model="editorContent"
