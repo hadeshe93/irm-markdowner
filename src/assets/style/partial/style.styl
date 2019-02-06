@@ -67,67 +67,116 @@
 }
 
 /**
- * input
+ * markdowner-wrapper
  */
-.input-wrapper {
+.markdowner-wrapper {
   position: absolute;
   top: 66px;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
-  width: 100%;
-  margin: 0;
+  display:flex;
+  justify-content: space-between;
   background: $color-secondary;
+  .input-wrapper {
+    width: 50%;
+    position: relative;
+    #input {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      bottom: 0;
+      padding: 0.5rem 0.2rem 0.2rem;
+      overflow: auto;
+      border: none;
+      outline: none;
+      background: $color-secondary;
+      resize: none;
+      font-size: 0.15rem;
+      font-family: inherit;
+      color: $color-white;
+      cursor: text;
+    }
+  }
 
-  display: flex;
-  justify-content: center;
-}
-#input {
-  position: absolute;
-  width: 8rem;
-  height: auto;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0.5rem;
-  bottom: 0;
-  overflow: auto;
-  border: none;
-  font-family: inherit;
-  color: inherit;
-  outline: none;
-  background: $color-secondary;
-  color: $color-white;
-  resize: none;
-  font-size: 0.15rem;
-  cursor: text;
-}
+  .output-wrapper {
+    width: 50%;
+    position: relative;
+    #output {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      padding: 0.5rem 0.2rem 0.2rem;
+      width: 100%;
+      background: #FFF;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+} 
+
+/**
+ * input
+ */
+// .input-wrapper {
+//   position: absolute;
+//   top: 66px;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   z-index: 2;
+//   width: 100%;
+//   margin: 0;
+//   background: $color-secondary;
+
+//   display: flex;
+//   justify-content: center;
+// }
+// #input {
+//   position: absolute;
+//   width: 8rem;
+//   height: auto;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   top: 0.5rem;
+//   bottom: 0;
+//   overflow: auto;
+//   border: none;
+//   font-family: inherit;
+//   color: inherit;
+//   outline: none;
+//   background: $color-secondary;
+//   color: $color-white;
+//   resize: none;
+//   font-size: 0.15rem;
+//   cursor: text;
+// }
 
 /**
  * #output
  */
-.output-wrapper {
-  position: absolute;
-  top: 0.66rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  resize: none;
-  z-index: 1;
-  background: $color-secondary;
-  overflow: hidden;
-  #output {
-    overflow-y: auto;
-    height: 100%;
-    margin: 0.5rem auto 0;
-    background: #FFF;
-    padding: 0.3rem 0.5rem;
-    width: 800px;
-    padding-bottom: 100px;
-    max-width: 100%;
-    -webkit-overflow-scrolling: touch;
-  }
-}
+// .output-wrapper {
+//   position: absolute;
+//   top: 0.66rem;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   resize: none;
+//   z-index: 1;
+//   background: $color-secondary;
+//   overflow: hidden;
+//   #output {
+//     overflow-y: auto;
+//     height: 100%;
+//     margin: 0.5rem auto 0;
+//     background: #FFF;
+//     padding: 0.3rem 0.5rem;
+//     width: 800px;
+//     padding-bottom: 100px;
+//     max-width: 100%;
+//     -webkit-overflow-scrolling: touch;
+//   }
+// }
 
 /**
  * .btn-group
@@ -140,47 +189,37 @@
   right: 0;
 
   .tools-bar {
-    width: 8rem;
-    margin: auto;
+    width: 100%;
     height: 0.5rem;
+    padding: 0 0.2rem;
+    margin: auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   .themes-group {
     label {
-      color: darken($color-white, 5%);
     }
+    margin-right: 0.2rem;
   }
 
   /* 按钮组 */
   .btn-group {
     .btn {
       border: none;
-      color: white;
-      padding: 5px 25px;
+      color: $color-white;
+      padding: 5px 15px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 16px;
     }
 
-    .convert-button,
     .copy-button {
       border-radius: 3px;
-      background-color: #3a6586;
+      background-color: $color-primary;
       cursor: pointer;
       font-size: 14px;
-    }
-
-    .copy-button {
-      margin-right: 0.1rem;
-    }
-
-    .convert-button {
-      background-color: #159957;
-      color: #e4e4e4;
     }
   }
 }

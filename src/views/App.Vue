@@ -28,7 +28,7 @@
       <div class="tools-bar">
         <!-- 代码主题选择组 -->
         <div class="themes-group">
-          <div class="theme-wrapper" v-show="status === APP_STATUS.PREVIEW">
+          <div class="theme-wrapper">
             <label>代码主题选择：</label>
             <select class="code-theme" v-model="codeTheme" 
               @change="codeThemeChangedHandler(codeTheme)">
@@ -40,34 +40,43 @@
         </div>
         <!-- 按钮组 -->
         <div class="btn-group">
-          <button type="button" class="btn copy-button" ref="clipboarddBtn"
-            data-clipboard-action="copy" data-clipboard-target="#output"
-            v-show="status === APP_STATUS.PREVIEW">全选内容</button>
-          <button type="button" class="btn convert-button" 
-            v-show="status === APP_STATUS.PREVIEW"
-            @click="toggleAppStatus(APP_STATUS.EDIT)">返回编辑</button>
-          <button type="button" class="btn convert-button" 
-            v-show="status === APP_STATUS.EDIT"
-            @click="toggleAppStatus(APP_STATUS.PREVIEW)">预览效果</button>
+          <button class="btn copy-button" ref="clipboarddBtn"
+            data-clipboard-action="copy" data-clipboard-target="#output">复制全部内容</button>
         </div>
       </div>
     </div>
     <!-- 行为按钮组 END -->
 
     <!-- 操作框 START -->
+    <div class="markdowner-wrapper">
+      <!-- 编辑框 START -->
+      <div class="input-wrapper">
+        <textarea id="input" ref="input" spellcheck="false" v-model="editorContent"
+          placeholder="即刻，在这里写下你的 markdown 格式文章 ..."
+          @scroll="!isPreviewScrollLocked && scrollHandler($event)"
+          @input="editorContentChangedHandler(editorContent)"></textarea>
+      </div>
+      <!-- 编辑框 END -->
+
+      <!-- 预览框 START -->
+      <div class="output-wrapper">
+        <div id="output" ref="output" v-html="previewContent" @scroll="!isEditorScrollLocked && scrollHandler($event)"></div>
+      </div>
+      <!-- 预览框 END -->
+    </div>
     <!-- 操作框 END -->
 
     <!-- 编辑框 START -->
-    <div class="input-wrapper" v-show="status === APP_STATUS.EDIT">
+    <!-- <div class="input-wrapper" v-show="status === APP_STATUS.EDIT">
       <textarea id="input" spellcheck="false" v-model="editorContent"
         @input="editorContentChangedHandler(editorContent)"></textarea>
-    </div>
+    </div> -->
     <!-- 编辑框 END -->
 
     <!-- 预览框 START -->
-    <div class="output-wrapper" v-show="status === APP_STATUS.PREVIEW">
+    <!-- <div class="output-wrapper" v-show="status === APP_STATUS.PREVIEW">
       <div id="output" v-html="previewContent"></div>
-    </div>
+    </div> -->
     <!-- 预览框 END -->
   </div>
 </template>
@@ -104,6 +113,14 @@
         editorContent: '',
         previewContent: '',
 
+        editorElm: null,
+        previewElm: null,
+        editorScrollTop: 0,
+        previewScrollTop: 0,
+
+        isEditorScrollLocked: false,
+        isPreviewScrollLocked: false,
+
         codeTheme: 'github-v2',
 
         APP_STATUS,
@@ -117,6 +134,37 @@
       },
     },
     methods: {
+      // 滚动回调
+      scrollHandler (evt) {
+        // console.log(evt.target.scrollTop);
+        // console.log(evt.target.scrollHeight);
+        // console.log(evt.target.clientHeight);
+
+        const target = evt.target;
+        const targetID = target.getAttribute('id');
+        const scrollPercent = target.scrollTop / (target.scrollHeight - target.clientHeight);
+        let destScrollTop = 0;
+        let destElm = null;
+
+        switch (targetID) {
+          case 'input':
+            destElm = this.previewElm;
+            this.previewElm.scrollTop = (destElm.scrollHeight - destElm.clientHeight) * scrollPercent;
+            this.isEditorScrollLocked && clearTimeout(this.isEditorScrollLocked);
+            this.isEditorScrollLocked = setTimeout(() => {
+                this.isEditorScrollLocked = false;
+              }, 500);
+            break;
+          case 'output':
+            destElm = this.editorElm;
+            this.editorElm.scrollTop = (destElm.scrollHeight - destElm.clientHeight) * scrollPercent;
+            this.isPreviewScrollLocked && clearTimeout(this.isPreviewScrollLocked);
+            this.isPreviewScrollLocked = setTimeout(() => {
+                this.isPreviewScrollLocked = false;
+              }, 500);
+            break;
+        }
+      },
       // 切换状态
       toggleAppStatus (status) {
         this.status = status;
@@ -145,6 +193,9 @@
       });
     },
     mounted () {
+      this.editorElm = this.$refs['input'];
+      this.previewElm = this.$refs['output'];
+
       codeThemeChanger = new codeThemes({
         prefixUrl: './themes/',
         theme: this.codeTheme,
@@ -152,7 +203,7 @@
 
       clipboard = new Clipboard(this.$refs['clipboarddBtn']);
       clipboard.on('success', (e) => {
-        this.$weui.toast('复制成功', 500);
+        this.$weui.toast('复制成功', 1000);
         // console.info('Action:', e.action);
         // console.info('Text:', e.text);
         // console.info('Trigger:', e.trigger);

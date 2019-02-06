@@ -8,7 +8,7 @@ GitHub 地址：[https://github.com/ironmaxtory/wechat-markdowner](https://githu
 - 支持不同代码样式主题
 - 代码长度溢出时横向滚动
 - 支持 Webpack 调试
-- 仅支持两层嵌套的 ul 和 ol
+- 仅支持一层的 ul 和 ol
 - 新增 Material Dark 代码样式主题<sup style="color:#e4393c;">New</sup>
 - 支持 emoji 表情<sup style="color:#e4393c;">New</sup>
 
