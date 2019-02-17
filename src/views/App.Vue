@@ -183,7 +183,7 @@
       },
     },
     created () {
-      this.$http.get('/dist/demo.md', {
+      this.$http.get('./demo.md', {
         params: { _t: +new Date() },
         responseType: 'text',
       }).then(rsp => {
@@ -191,6 +191,15 @@
         this.editorContent = demo;
         this.updatePreview(demo);
       });
+    },
+    updated () {
+      const ulElms = document.querySelectorAll('#output > ul');
+      const olElms = document.querySelectorAll('#output > ol');
+      let ulWrapper = document.createElement('section');
+      let olWrapper = document.createElement('section');
+      if (ulElms.length > 0) {
+        // ulElms.forEach(ulElm => {});
+      }
     },
     mounted () {
       this.editorElm = this.$refs['input'];

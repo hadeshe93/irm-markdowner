@@ -6,6 +6,11 @@ import weui from 'weui.js';
 import App from '@VIEWS/App';
 import http from '@SRC/plugins/http';
 
+// 方便跨域加载资源
+if (/\.ironmaxi\.com$/.test(location.hostname)) {
+    document.domain = 'ironmaxi.com';
+  }
+
 // 原型注入
 Vue.prototype.$http = http;
 Vue.prototype.$weui = weui;

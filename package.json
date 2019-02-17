@@ -4,8 +4,8 @@
   "description": "A online markdown converter specially for Wechat Public formatting.",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development && webpack-dev-server --host 0.0.0.0 --port 5014 --inline --hot --progress --config ./build/webpack.config.js",
-    "build": "NODE_ENV=production && webpack --progress --profile --color --display-modules --display-chunks --config ./build/webpack.production.config.js"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 5014 --inline --hot --progress --config ./build/webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --progress --profile --color --display-modules --display-chunks --config ./build/webpack.production.config.js"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "@babel/runtime": "^7.3.1",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^0.1.17",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.10.0",
@@ -55,5 +56,10 @@
     "vue-template-compiler": "^2.5.22",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.9.7"
-  }
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "ie >= 10"
+  ]
 }

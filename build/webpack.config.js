@@ -7,7 +7,8 @@ module.exports = {
     ...config,
     output: {
         publicPath: '/md/',
-        path: path.resolve(constants.DIST_PATH, 'js'),
+        // path: path.resolve(constants.DIST_PATH, 'js'),
+        path: constants.DIST_PATH,
         filename: '[name].[hash:8].js'
     },
     devServer: {

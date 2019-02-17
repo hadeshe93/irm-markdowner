@@ -22,19 +22,19 @@ showdown.extension('list', function () {
 
       // 给 ul 加一层外衣，便于重载样式
       // 微信公众号也不支持多层嵌套，最多两层
-      source = source.replace(/<ul>(?<!<\/ul>)([\s\S]*)<\/ul>/gi, function (match, pre) {
-        if (pre) {
-          return '<section class="ul-wrapper"><ul>' + pre + '</ul></section>';
-        }
-      });
+      // source = source.replace(/<ul>([\s\S]*?)<\/ul>/gi, function (match, pre) {
+      //   if (pre) {
+      //     return '<section class="ul-wrapper"><ul>' + pre + '</ul></section>';
+      //   }
+      // });
 
       // 给 ol 加一层外衣，便于重载样式
       // 微信公众号也不支持多层嵌套，最多两层
-      source = source.replace(/<ol>(?<!<\/ol>)([\s\S]*)<\/ol>/gi, function (match, pre) {
-        if (pre) {
-          return '<section class="ol-wrapper"><ol>' + pre + '</ol></section>';
-        }
-      });
+      // source = source.replace(/<ol>([\s\S]*?)<\/ol>/gi, function (match, pre) {
+      //   if (pre) {
+      //     return '<section class="ol-wrapper"><ol>' + pre + '</ol></section>';
+      //   }
+      // });
 
       // 将 a 替换成 span，因为 a 在公众号文章里也会被转化掉
       source = source.replace(/<a [\s\S]*?>([\s\S]*?)<\/a>/gi, function (match, pre) {

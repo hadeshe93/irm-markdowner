@@ -14,9 +14,12 @@ GitHub 地址：[https://github.com/ironmaxtory/wechat-markdowner](https://githu
 
 ## 列表嵌套
 1. lorem
-    - 123
 2. lorem
 3. lorem
+
++ lorem
++ lorem
++ lorem
 
 ## Emoji 表情
 :1st_place_medal: :2nd_place_medal: :3rd_place_medal: :astonished: :avocado:
