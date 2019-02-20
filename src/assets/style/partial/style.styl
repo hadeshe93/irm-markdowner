@@ -29,7 +29,7 @@
   padding: 0 0.2rem;
   position: relative;
   background: $color-dark;
-  border-bottom: 2px solid darken($color-primary, 10%);
+  border-bottom: 1px solid darken($color-primary, 10%);
   
   * {
     padding: 0;
@@ -81,36 +81,38 @@
   .input-wrapper {
     width: 50%;
     position: relative;
+    background: $color-secondary;
     #input {
       position: absolute;
       width: 100%;
-      top: 0;
+      top: 0.5rem;
       bottom: 0;
-      padding: 0.5rem 0.2rem 0.2rem;
+      padding: 0 0.2rem 0.2rem;
       overflow: auto;
       border: none;
       outline: none;
-      background: $color-secondary;
       resize: none;
       font-size: 0.15rem;
       font-family: inherit;
-      color: $color-white;
+      color: $color-light;
       cursor: text;
+      background: $color-secondary;
     }
   }
 
   .output-wrapper {
     width: 50%;
     position: relative;
+    background: $color-white;
     #output {
       position: absolute;
-      top: 0;
+      top: 0.5rem;
       bottom: 0;
-      padding: 0.5rem 0.2rem 0.2rem;
+      padding: 0 0.2rem 0.2rem;
       width: 100%;
-      background: #FFF;
       overflow: auto;
       -webkit-overflow-scrolling: touch;
+      background: $color-white;
     }
   }
 } 

@@ -53,14 +53,14 @@
       <div class="input-wrapper">
         <textarea id="input" ref="input" spellcheck="false" v-model="editorContent"
           placeholder="即刻，在这里写下你的 markdown 格式文章 ..."
-          @scroll="!isPreviewScrollLocked && scrollHandler($event)"
-          @input="editorContentChangedHandler(editorContent)"></textarea>
+          @scroll="!isPreviewScrollLocked && scrollHandler($event.target)()"
+          ></textarea>
       </div>
       <!-- 编辑框 END -->
 
       <!-- 预览框 START -->
       <div class="output-wrapper">
-        <div id="output" ref="output" v-html="previewContent" @scroll="!isEditorScrollLocked && scrollHandler($event)"></div>
+        <div id="output" ref="output" v-html="previewContent" @scroll="!isEditorScrollLocked && scrollHandler($event.target)()"></div>
       </div>
       <!-- 预览框 END -->
     </div>
@@ -82,6 +82,8 @@
 </template>
 
 <script>
+  import Vue from 'vue';
+  import _function from 'lodash/function';
   import imgQrcodeScan from '@ASSETS/imgs/qrcode_scan.png';
   // markdown 转换器
   import converter from '@SRC/plugins/converter';
@@ -133,37 +135,43 @@
         return WPP_CODE_THEMES.map(theme => theme.slice(0, -4));
       },
     },
+    watch: {
+      editorContent (newVal, oldVal) {
+        this.editorContentChangedHandler(newVal);
+      },
+    },
     methods: {
       // 滚动回调
-      scrollHandler (evt) {
-        // console.log(evt.target.scrollTop);
-        // console.log(evt.target.scrollHeight);
-        // console.log(evt.target.clientHeight);
+      scrollHandler (target) {
+        return _function.throttle(()=>{
+          console.log(2);
+          const targetID = target.getAttribute('id');
+          const scrollPercent = target.scrollTop / (target.scrollHeight - target.clientHeight);
+          let destScrollTop = 0;
+          let destElm = null;
 
-        const target = evt.target;
-        const targetID = target.getAttribute('id');
-        const scrollPercent = target.scrollTop / (target.scrollHeight - target.clientHeight);
-        let destScrollTop = 0;
-        let destElm = null;
-
-        switch (targetID) {
-          case 'input':
-            destElm = this.previewElm;
-            this.previewElm.scrollTop = (destElm.scrollHeight - destElm.clientHeight) * scrollPercent;
-            this.isEditorScrollLocked && clearTimeout(this.isEditorScrollLocked);
-            this.isEditorScrollLocked = setTimeout(() => {
-                this.isEditorScrollLocked = false;
-              }, 500);
-            break;
-          case 'output':
-            destElm = this.editorElm;
-            this.editorElm.scrollTop = (destElm.scrollHeight - destElm.clientHeight) * scrollPercent;
-            this.isPreviewScrollLocked && clearTimeout(this.isPreviewScrollLocked);
-            this.isPreviewScrollLocked = setTimeout(() => {
-                this.isPreviewScrollLocked = false;
-              }, 500);
-            break;
-        }
+          switch (targetID) {
+            case 'input':
+              destElm = this.previewElm;
+              this.previewElm.scrollTop = (destElm.scrollHeight - destElm.clientHeight) * scrollPercent;
+              this.isEditorScrollLocked && clearTimeout(this.isEditorScrollLocked);
+              this.isEditorScrollLocked = setTimeout(() => {
+                  this.isEditorScrollLocked = false;
+                }, 500);
+              break;
+            case 'output':
+              destElm = this.editorElm;
+              this.editorElm.scrollTop = (destElm.scrollHeight - destElm.clientHeight) * scrollPercent;
+              this.isPreviewScrollLocked && clearTimeout(this.isPreviewScrollLocked);
+              this.isPreviewScrollLocked = setTimeout(() => {
+                  this.isPreviewScrollLocked = false;
+                }, 500);
+              break;
+          }
+        }, 10, {
+          leading: false,
+          // trailing: false
+        });
       },
       // 切换状态
       toggleAppStatus (status) {
@@ -175,11 +183,18 @@
       },
       // 编辑器内容变化回调
       editorContentChangedHandler (editorContent) {
+        console.log('编辑器内容变化回调');
         this.updatePreview(editorContent);
       },
       // 更新预览视图
       updatePreview (editorContent) {
         this.previewContent = converter.makeHtml(editorContent);
+        // 等待 DOM 更新完毕
+        Vue.nextTick(() => {
+          PR.prettyPrint();
+
+          this.scrollHandler(this.editorElm);
+        });
       },
     },
     created () {
@@ -189,17 +204,15 @@
       }).then(rsp => {
         const demo = rsp.data;
         this.editorContent = demo;
-        this.updatePreview(demo);
       });
     },
     updated () {
-      const ulElms = document.querySelectorAll('#output > ul');
-      const olElms = document.querySelectorAll('#output > ol');
-      let ulWrapper = document.createElement('section');
-      let olWrapper = document.createElement('section');
-      if (ulElms.length > 0) {
-        // ulElms.forEach(ulElm => {});
-      }
+      // const ulElms = document.querySelectorAll('#output > ul');
+      // const olElms = document.querySelectorAll('#output > ol');
+      // let ulWrapper = document.createElement('section');
+      // let olWrapper = document.createElement('section');
+      // if (ulElms.length > 0) {
+      // }
     },
     mounted () {
       this.editorElm = this.$refs['input'];

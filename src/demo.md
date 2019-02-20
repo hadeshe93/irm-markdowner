@@ -43,6 +43,9 @@ Aliqua aliqua id pariatur officia ipsum est. Ipsum velit irure exercitation moll
 `html`代码
 ```html
 <h1 class="title">标题</h1>
+<template>
+    <div class="view"></div>
+</template>
 ```
 
 ---
