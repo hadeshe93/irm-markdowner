@@ -11,12 +11,20 @@ cache:
     - node_modules/
     - md/
 
+before_script:
+  - PATH=/usr/local/node/bin:$PATH
+  - export PATH
+  - whoami
+  - pwd
+  - echo $PATH
+
 # 定义 job
 job_install:
   stage: install
   when: manual
   script:
     - echo "Starting job_install"
+    - pwd
     - npm install
 
 # 定义 job
