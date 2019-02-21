@@ -51,8 +51,9 @@ const commonConfig = {
             },
             {
                 test: /\.js$/,
+                exclude: '/node_modules/',
                 loader: 'babel-loader',
-                include: SRC_PATH,
+                // include: SRC_PATH,
             },
             {
                 test: /\.vue$/,
