@@ -6,11 +6,11 @@ stages:
   - install_build_deploy
 
 # 设置缓存
-cache:
-  key: ${CI_COMMIT_REF_NAME}
-  paths:
-    - node_modules/
-    - md/
+# cache:
+#   key: ${CI_COMMIT_REF_NAME}
+#   paths:
+#     - node_modules/
+#     - md/
 
 # before_script:
 #   - PATH=/usr/local/node/bin:$PATH
