@@ -24,7 +24,7 @@ job_install:
   when: manual
   script:
     - echo "Starting job_install"
-    - pwd
+    - ls -l
     - npm install
 
 # 定义 job
