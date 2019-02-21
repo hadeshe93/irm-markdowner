@@ -1,5 +1,8 @@
 # 定义 image
-image: node:10.15.0
+# image: node:10.15.0
+
+services:
+  - node:10.15.0
 
 # 定义 stages
 stages:
