@@ -29,7 +29,7 @@ before_script:
 # 定义 job
 job_install_build_deploy:
   stage: install_build_deploy
-  when: manual
+  # when: manual
   script:
     - echo "Starting job_build"
     - npm run build
