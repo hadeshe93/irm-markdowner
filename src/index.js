@@ -3,7 +3,7 @@ import '@ASSETS/style/index.styl';
 
 import Vue from 'vue';
 import weui from 'weui.js';
-import App from '@VIEWS/App';
+import App from '@VIEWS/App.vue';
 import http from '@SRC/plugins/http';
 
 // 方便跨域加载资源

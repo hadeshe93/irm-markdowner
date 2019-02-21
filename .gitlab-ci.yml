@@ -3,9 +3,7 @@ image: node:10
 
 # 定义 stages
 stages:
-  - install
-  - build
-  - deploy
+  - install_build_deploy
 
 # 设置缓存
 cache:
@@ -22,27 +20,15 @@ cache:
 #   - echo $PATH
 
 # 定义 job
-job_install:
-  stage: install
+job_install_build_deploy:
+  stage: install_build_deploy
   when: manual
   script:
     - echo "Starting job_install"
     - ls -l
     - npm install
-
-# 定义 job
-job_build:
-  stage: build
-  when: manual
-  script:
     - echo "Starting job_build"
     - npm run build
-
-# 定义 job
-job_deploy:
-  stage: deploy
-  when: manual
-  script:
     - echo "Starting deploy"
     - rm -rf /var/data/sword/md
     - copy md/ /var/data/sword
