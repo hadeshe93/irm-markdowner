@@ -8,7 +8,7 @@ GitHub 地址：[https://github.com/ironmaxtory/wechat-markdowner](https://githu
 - 支持不同代码样式主题
 - 代码长度溢出时横向滚动
 - 支持 Webpack 调试
-- 仅支持一层的 ul 和 ol
+- 仅支持一层的 ul 和 ol，因为微信编辑器也不支持多层的列表
 - 新增 Material Dark 代码样式主题<sup style="color:#e4393c;">New</sup>
 - 支持 emoji 表情<sup style="color:#e4393c;">New</sup>
 
@@ -79,7 +79,7 @@ echo 'hello,world'
 ## 表格示例
 
 | 品类 | 个数 | 备注 |
-|-----|-----|------|
+|:-----:|:-----:|:------:|
 | 程序猿 | 1   | handsome |
 | 程序媛 | 1   | beautiful |
 

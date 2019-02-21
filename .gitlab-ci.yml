@@ -1,0 +1,37 @@
+# 定义 stages
+stages:
+  - install
+  - build
+  - deploy
+
+# 设置缓存
+cache:
+  key: ${CI_COMMIT_REF_NAME}
+  paths:
+    - node_modules/
+    - md/
+
+# 定义 job
+job_install:
+  stage: install
+  when: manual
+  script:
+    - echo "Starting job_install"
+    - npm install
+
+# 定义 job
+job_build:
+  stage: build
+  when: manual
+  script:
+    - echo "Starting job_build"
+    - npm run build
+
+# 定义 job
+job_deploy:
+  stage: deploy
+  when: manual
+  script:
+    - echo "Starting deploy"
+    - rm -rf /var/data/sword/md
+    - copy md/ /var/data/sword

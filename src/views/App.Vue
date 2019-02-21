@@ -53,14 +53,14 @@
       <div class="input-wrapper">
         <textarea id="input" ref="input" spellcheck="false" v-model="editorContent"
           placeholder="即刻，在这里写下你的 markdown 格式文章 ..."
-          @scroll="!isPreviewScrollLocked && scrollHandler($event.target)()"
+          @scroll="!isPreviewScrollLocked && scrollHandler($event.target)"
           ></textarea>
       </div>
       <!-- 编辑框 END -->
 
       <!-- 预览框 START -->
       <div class="output-wrapper">
-        <div id="output" ref="output" v-html="previewContent" @scroll="!isEditorScrollLocked && scrollHandler($event.target)()"></div>
+        <div id="output" ref="output" v-html="previewContent" @scroll="!isEditorScrollLocked && scrollHandler($event.target)"></div>
       </div>
       <!-- 预览框 END -->
     </div>
@@ -134,6 +134,9 @@
         // 去除掉 '.css' 的后缀
         return WPP_CODE_THEMES.map(theme => theme.slice(0, -4));
       },
+      scrollHandler () {
+        return this.getScrollThrottleHandler();
+      },
     },
     watch: {
       editorContent (newVal, oldVal) {
@@ -141,10 +144,9 @@
       },
     },
     methods: {
-      // 滚动回调
-      scrollHandler (target) {
-        return _function.throttle(()=>{
-          console.log(2);
+      // 获取滚动回调的节流函数
+      getScrollThrottleHandler () {
+        return _function.throttle((target) => {
           const targetID = target.getAttribute('id');
           const scrollPercent = target.scrollTop / (target.scrollHeight - target.clientHeight);
           let destScrollTop = 0;
@@ -168,9 +170,9 @@
                 }, 500);
               break;
           }
-        }, 10, {
-          leading: false,
-          // trailing: false
+        }, 16, {
+          leading: true,
+          trailing: true
         });
       },
       // 切换状态
