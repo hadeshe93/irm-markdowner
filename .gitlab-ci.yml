@@ -19,16 +19,18 @@ stages:
 #   - pwd
 #   - echo $PATH
 
+before_script:
+  - echo "Starting job_install"
+  - ls -l
+  - node -v
+  - npm -v
+  - npm install
+
 # 定义 job
 job_install_build_deploy:
   stage: install_build_deploy
   when: manual
   script:
-    - echo "Starting job_install"
-    - ls -l
-    - node -v
-    - npm -v
-    - npm install
     - echo "Starting job_build"
     - npm run build
     - echo "Starting deploy"
