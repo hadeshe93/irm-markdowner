@@ -16,7 +16,9 @@ const VIEWS_PATH = path.resolve(SRC_PATH, './views');
 const COMPONENTS_PATH = path.resolve(SRC_PATH, './components');
 
 const CODE_THEMES = fs.readdirSync(path.resolve(ASSETS_PATH, 'style/themes/'));
-
+console.log(__dirname);
+console.log(ROOT_PATH);
+console.log(VIEWS_PATH);
 const commonConfig = {
     //页面入口文件配置
     entry: {
