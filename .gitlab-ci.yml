@@ -21,7 +21,7 @@ stages:
 
 before_script:
   - echo "Starting job_install"
-  - ls -l
+  - ls -al
   - node -v
   - npm -v
   - npm install
