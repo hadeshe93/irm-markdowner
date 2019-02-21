@@ -22,7 +22,7 @@ stages:
 before_script:
   - echo "Starting job_install"
   - ls -al
-  - ls -al src
+  - ls -al src/views
   - node -v
   - npm -v
   - npm install
