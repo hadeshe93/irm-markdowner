@@ -1,3 +1,6 @@
+# 定义 image
+image: node:10
+
 # 定义 stages
 stages:
   - install
@@ -11,12 +14,12 @@ cache:
     - node_modules/
     - md/
 
-before_script:
-  - PATH=/usr/local/node/bin:$PATH
-  - export PATH
-  - whoami
-  - pwd
-  - echo $PATH
+# before_script:
+#   - PATH=/usr/local/node/bin:$PATH
+#   - export PATH
+#   - whoami
+#   - pwd
+#   - echo $PATH
 
 # 定义 job
 job_install:
