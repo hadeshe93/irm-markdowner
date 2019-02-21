@@ -26,7 +26,7 @@ const commonConfig = {
     resolve: {
         extensions: ['*', '.vue', '.js'],
         alias: {
-            'vue': 'vue/dist/vue.esm.js',
+            'vue$': 'vue/dist/vue.esm.js',
             'axios': 'axios/dist/axios.min.js',
 
             '@SRC': SRC_PATH,
