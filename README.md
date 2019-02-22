@@ -43,7 +43,7 @@ npm run build
 ```
 
 ### About Me
-<img style="width:250px;" src="https://cdn.ironmaxi.com/images/upload/qrcode_2018.png" alt="微信公众号"/>
+<img width="200" src="https://cdn.ironmaxi.com/images/upload/qrcode_2018.png" alt="微信公众号"/>
 
 ### LICENSE
 MIT. Thanks for @Phodal & @barretlee.
