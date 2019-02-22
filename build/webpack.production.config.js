@@ -26,6 +26,4 @@ prdConfig.plugins.unshift(
     })
 );
 
-console.log(prdConfig);
-
 module.exports = prdConfig;
