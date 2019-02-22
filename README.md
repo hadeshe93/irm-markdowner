@@ -1,14 +1,16 @@
 # Wechat Markdowner Online
 
+[![pipeline status](https://gitlab.com/ironmaxtory/irm-markdowner/badges/master/pipeline.svg)](https://gitlab.com/ironmaxtory/irm-markdowner/commits/master)
+
 A online markdown converter specially for Wechat Public formatting.
 
-- Online Address: <http://md2.ironmaxi.com/>
+- Online Address: <http://md.ironmaxi.com/>
 - Issue & Suggestion: <https://github.com/hadeshe93/irm-markdowner/issues/new>
 
 ### Statement
 The project is forked from Github repo named [online-markdown](https://github.com/barretlee/online-markdown) which created by @barretlee.
 
-I have just customize the remarkable markdown converter according to my favorite [Atom Material UI Theme](https://github.com/atom-material/atom-material-ui) and [Atom Material Syntax](https://github.com/atom-material/atom-material-syntax) as well as other function that I used to use.
+I have just customized the remarkable markdown converter according to my favorite [Atom Material UI Theme](https://github.com/atom-material/atom-material-ui) and [Atom Material Syntax](https://github.com/atom-material/atom-material-syntax) as well as other function that I used to use.
 
 Thanks for the original author again!
 
@@ -40,17 +42,8 @@ distribute you production code:
 npm run build
 ```
 
-### ChangeLog
-- 支持更换代码样式主题
-- 代码长度溢出时横向滚动
-- 支持 Webpack 调试
-- 新增 Material Dark 代码样式主题
-- 兼容手机显示
-- Fix初始化页面没有加载样式
-
 ### About Me
-![微信公众号二维码](http://cdn.ironmaxi.com/images/wechat/qrcode_scan_200.png)
+<img style="width:250px;" src="https://cdn.ironmaxi.com/images/upload/qrcode_2018.png" alt="微信公众号"/>
 
 ### LICENSE
-
 MIT. Thanks for @Phodal & @barretlee.
