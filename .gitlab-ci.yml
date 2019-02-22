@@ -1,14 +1,12 @@
 # 定义 image
-# image: node:10.15.0
-
-# services:
-#   - node:9
+image: node:10.15.0
 
 # 定义 stages
 stages:
   - install_build_deploy
 
 # 设置缓存
+# ps: 只有一个 job 就不用设置缓存了
 # cache:
 #   key: ${CI_COMMIT_REF_NAME}
 #   paths:
@@ -16,6 +14,7 @@ stages:
 #     - md/
 
 # before_script:
+# ps: 提供一种思路
 #   - PATH=/usr/local/node/bin:$PATH
 #   - export PATH
 #   - whoami

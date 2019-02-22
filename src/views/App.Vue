@@ -123,6 +123,7 @@
         isEditorScrollLocked: false,
         isPreviewScrollLocked: false,
 
+        // 默认主题
         codeTheme: 'github-v2',
 
         APP_STATUS,
