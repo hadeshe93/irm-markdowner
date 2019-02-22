@@ -40,5 +40,5 @@ job_install_build_deploy:
     - npm run build
     # 部署
     - echo "Starting deploy"
-    - rm -rf /var/data/sword/md
-    - cp -r md /var/data/sword
+    - sudo rm -rf /var/data/sword/md
+    - sudo cp -r md /var/data/sword
