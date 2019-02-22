@@ -42,9 +42,16 @@ Aliqua aliqua id pariatur officia ipsum est. Ipsum velit irure exercitation moll
 ## 代码示例
 `html`代码
 ```html
-<h1 class="title">标题</h1>
 <template>
-    <div class="view"></div>
+  <Promised :promise="usersPromise">
+    <p slot="pending">Loading...</p>
+
+    <ul slot-scope="users">
+      <li v-for="user in users">{{ user.name }}</li>
+    </ul>
+
+    <p slot="rejected" slot-scope="error">Error: {{ error.message }}</p>
+  </Promised>
 </template>
 ```
 
@@ -86,6 +93,6 @@ echo 'hello,world'
 ## 关于何大叔
 <!-- ![微信公众号](http://cdn.ironmaxi.com/images/wechat/qrcode_300x300.png) -->
 <p style="text-align:center;">
-    <img style="width:200px;" src="http://cdn.ironmaxi.com/images/wechat/qrcode_scan.png" alt="微信公众号"/>
+    <img width="200" src="https://cdn.ironmaxi.com/images/upload/qrcode_2018.png" alt="微信公众号"/>
 </p>
 ---

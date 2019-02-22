@@ -7,17 +7,18 @@
       </a>
       <ul class="nav right">
         <li class="nav-item">
+          <a href="https://blog.ironmaxi.com">关注傻蛋何发发</a>
+        </li>
+        <li class="nav-item">
           <a href="https://github.com/hadeshe93/irm-markdowner" target="_blank">源码地址</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="https://github.com/hadeshe93/irm-markdowner/issues/new" target="_blank">提需求</a>
-        </li>
-        <li class="nav-item">
-          <a href="javascript:void();">关注Hades</a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <li class="nav-item" style="position: relative;" v-if="false">
           <iframe allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20px" class="github-star"
             src="http://ghbtns.com/github-btn.html?user=hadeshe93&amp;repo=irm-markdowner&amp;type=watch&amp;count=true&amp;size=middle"></iframe>
+          <p style="position: absolute; bottom: 2px; line-height:1;">需要你的 Star!</p>
         </li>
       </ul>
     </div>
