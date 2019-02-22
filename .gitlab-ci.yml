@@ -38,4 +38,4 @@ job_install_build_deploy:
     # 部署
     - echo "Starting deploy"
     - rm -rf /var/data/sword/md
-    - cp -r md/ /var/data/sword/
+    - cp -r md /var/data/sword
