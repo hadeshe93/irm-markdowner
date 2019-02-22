@@ -28,6 +28,9 @@ job_install_build_deploy:
   # when: manual
   only:
     - master
+  except:
+    changes:
+      - README.md  
   script:
     # 打印一些相关信息
     - pwd
