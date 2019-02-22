@@ -29,6 +29,9 @@ job_install_build_deploy:
   only:
     - master
   script:
+    # 打印一些相关信息
+    - echo pwd
+    - echo whoami
     # 安装依赖
     - echo "Starting job_install"
     - npm install
