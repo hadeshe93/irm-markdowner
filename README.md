@@ -31,9 +31,8 @@ npm install
 ```
 run the local server:
 ```bash
-npm run server
+npm start
 ```
-
 
 When you have finished your code and the debug, you can distribute the code.
 
