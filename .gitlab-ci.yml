@@ -21,21 +21,21 @@ stages:
 #   - pwd
 #   - echo $PATH
 
-before_script:
-  - echo "Starting job_install"
-  - ls -al
-  - ls -al src/views
-  - node -v
-  - npm -v
-  - npm install
 
 # 定义 job
 job_install_build_deploy:
   stage: install_build_deploy
   # when: manual
+  only:
+    - master
   script:
+    # 安装依赖
+    - echo "Starting job_install"
+    - npm install
+    # 打包构建
     - echo "Starting job_build"
     - npm run build
+    # 部署
     - echo "Starting deploy"
     - rm -rf /var/data/sword/md
-    - cp -r md/ /var/data/sword/md
+    - cp -r md/ /var/data/sword/
