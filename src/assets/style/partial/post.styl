@@ -178,8 +178,18 @@ postContentStyle() {
 postCodeStyle() {
     pre.prettyprint.prettyprinted {
         border: none;
+        -webkit-overflow-scrolling: touch;
+        white-space: pre;
+        letter-spacing: 0px !important;
+        overflow: auto;
         ol {
             font-size: 12px;
+        }
+        section.pre-content {
+            width: 1600px;
+            max-width: 1600px !important;
+            white-space: pre;
+            margin: 0 !important;
         }
     }
     pre.linenums {
@@ -188,13 +198,21 @@ postCodeStyle() {
     code.prettyprint {
         padding: 2px 4px;
         font-size: 85%;
-        // background: $color-code-bkg;
         border-radius: 3px;
         margin-left: 2px;
         margin-right: 2px;
     }
-    code.prettyprint .pln {
-        // color: $color-code;
+    ol.linenums {
+        -webkit-overflow-scrolling: touch;
+        li {
+            code {
+                span {
+                    white-space: inherit !important;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
     }
 }
 

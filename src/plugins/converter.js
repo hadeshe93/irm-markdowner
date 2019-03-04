@@ -1,13 +1,11 @@
 import showdown from 'showdown';
-import 'showdown-prettify';
-import './showdown-list';
+import './showdown-prettify';
 
 const converter = new showdown.Converter({
     /**
      * 扩展
      */
     extensions: [
-        'list',
         'prettify',
     ],
     /**

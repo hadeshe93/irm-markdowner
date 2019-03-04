@@ -1,6 +1,6 @@
 import showdown from 'showdown';
 
-showdown.extension('list', function () {
+showdown.extension('prettify', function () {
   return [{
     type:   'output',
     filter: function (source) {
@@ -59,10 +59,15 @@ showdown.extension('list', function () {
 
       source = source.replace(/(<pre[^>]*>)?[\n\s]?<code([^>]*)>/gi, function (match, pre, codeClass) {
         if (pre) {
-          return '<pre class="prettyprint linenums"><code' + codeClass + ' >';
+          return '<pre class="prettyprint linenums" style="font-size:12px;"><code' + codeClass + ' style="font-size:12px;">';
         } else {
-          return ' <code class="prettyprint code-in-text">';
+          return ' <code class="prettyprint code-in-text" style="font-size:12px;">';
         }
+      });
+
+      source = source.replace(/<pre([^>]*)>([\s\S]*?)<\/pre>/gi, function (match, preClass, content) {
+        console.log(arguments);
+        return '<pre '+ preClass +'><section class="pre-content">'+ content +'</section></pre>';
       });
 
       return source;

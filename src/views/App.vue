@@ -125,7 +125,7 @@
         isPreviewScrollLocked: false,
 
         // 默认主题
-        codeTheme: 'github-v2',
+        codeTheme: 'material-dark',
 
         APP_STATUS,
         status: APP_STATUS.EDIT,
