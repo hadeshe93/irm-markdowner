@@ -1,16 +1,18 @@
 <template>
   <div class="view-app">
     <!-- 头部栏 START -->
-    <div class="topheader overflow-hidden">
+    <!-- <div class="topheader overflow-hidden"> -->
+    <div class="topheader ">
       <a href="//md.ironmaxi.com" class="title-link left">
-        <h1 class="title">IRM Markdowner | <span>沉浸式写作</span></h1>
+        <h1 class="title">IRM Markdowner | <span>沉浸式写作</span> 📝</h1>
       </a>
       <ul class="nav right">
-        <li class="nav-item">
-          <a href="https://blog.ironmaxi.com">关注傻蛋何发发</a>
+        <li class="nav-item" @mouseover="tipShowed = true" @mouseleave="tipShowed = false">
+          <a href="javascript:void(0);">关注傻蛋何发发 👏</a>
+          <!-- <a href="https://blog.ironmaxi.com">关注傻蛋何发发</a> -->
         </li>
         <li class="nav-item">
-          <a href="https://github.com/hadeshe93/irm-markdowner" target="_blank">源码地址</a>
+          <a href="https://github.com/hadeshe93/irm-markdowner" target="_blank">给个Star ⭐️</a>
         </li>
         <!-- <li class="nav-item">
           <a href="https://github.com/hadeshe93/irm-markdowner/issues/new" target="_blank">提需求</a>
@@ -21,6 +23,9 @@
           <p style="position: absolute; bottom: 2px; line-height:1;">需要你的 Star!</p>
         </li>
       </ul>
+      <tip class="widget-tip" :show="tipShowed">
+        <img slot="content" style="max-width: 100%;" :src="wechatPublicImg" alt="微信公众号二维码">
+      </tip>
     </div>
     <!-- 头部栏 END -->
 
@@ -92,6 +97,10 @@
   import '@ASSETS/scripts/google-code-prettify/run_prettify';
   // 剪贴板
   import Clipboard from 'clipboard';
+  // 组件
+  import Tip from '@SRC/components/tip.vue';
+  // 图片
+  import wechatPublicImg from '@SRC/assets/imgs/wechat_public.jpeg'
 
   // 剪贴板实例容器
   let clipboard = null;
@@ -109,9 +118,13 @@
 
   export default {
     name: "app",
+    components: {
+      Tip,
+    },
     data() {
       return {
         imgQrcodeScan,
+        wechatPublicImg,
 
         editorContent: '',
         previewContent: '',
@@ -129,6 +142,8 @@
 
         APP_STATUS,
         status: APP_STATUS.EDIT,
+
+        tipShowed: false,
       };
     },
     computed: {
@@ -146,6 +161,9 @@
       },
     },
     methods: {
+      qrcodeHoverHandler () {
+        this.tipShowed = true;
+      },
       // 获取滚动回调的节流函数
       getScrollThrottleHandler () {
         return _function.throttle((target) => {
@@ -247,4 +265,14 @@
 </script>
 
 <style lang="less" scoped>
+.topheader {
+  position: relative;
+  z-index: 10;
+  .widget-tip {
+    position: absolute;
+    z-index: 100;
+    right: 90px;
+    top: 60px;
+  }
+}
 </style>
