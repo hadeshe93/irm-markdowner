@@ -6,7 +6,7 @@ const converter = new showdown.Converter({
      * 扩展
      */
     extensions: [
-        'prettify',
+        'prettify', 'widget-blockquote-warn'
     ],
     /**
      * Enable support for setting image dimensions from within markdown syntax

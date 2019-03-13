@@ -74,3 +74,16 @@ showdown.extension('prettify', function () {
     }
   }];
 });
+
+// 警告组件
+showdown.extension('widget-blockquote-warn', function () {
+  return [{
+    type: 'language',
+    filter (source) {
+      source = source.replace(/```!([\s\S]*?)```/, function (match, content) {
+        return '<blockquote class="danger">' + content + '</blockquote>'
+      });
+      return source;
+    },
+  }];
+});

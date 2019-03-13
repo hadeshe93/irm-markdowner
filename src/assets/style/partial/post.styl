@@ -172,6 +172,28 @@ postContentStyle() {
             margin: 0;
         }
     }
+
+    blockquote.danger {
+        border-left-color: $color-danger;
+        color: $color-danger;
+        // position: relative;
+        &>.mark {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            // position: absolute;
+            // left: -11px;
+            // top: 50%;
+            // transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: $color-danger;
+            color: $color-white;
+            text-align: center;
+            line-height: 18px;
+        }
+    }
 }
 
 // 代码样式
