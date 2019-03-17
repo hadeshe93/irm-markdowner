@@ -275,7 +275,7 @@ var IN_GLOBAL_SCOPE = false;
   }
   // 国内抓不到这个文件，本叔把文件下载下来放到自己的文件服务器上了
   // skinUrls.push(LOADER_BASE_URL + '/prettify.css');
-  skinUrls.push('http://cdn.ironmaxi.com/assets/code-prettify' + '/prettify.css');
+  skinUrls.push('https://cdn.ironmaxi.com/assets/code-prettify' + '/prettify.css');
   loadStylesheetsFallingBack(skinUrls);
 
   var prettyPrint = (function () {
