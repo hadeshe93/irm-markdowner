@@ -221,7 +221,8 @@
     },
     created () {
       this.$http.get('./demo.md', {
-        params: { _t: +new Date() },
+        // 由于采用了 pwa，所以不要做这个了
+        // params: { _t: +new Date() },
         responseType: 'text',
       }).then(rsp => {
         const demo = rsp.data;
