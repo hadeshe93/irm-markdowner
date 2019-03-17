@@ -7,6 +7,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin('[name]_css.[hash:8].css');
 const extractLESS = new ExtractTextPlugin('[name]_less.[hash:8].css');
+const SwRegisterWebpackPlugin = require('sw-register-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 const ROOT_PATH = path.resolve(__dirname, '../');
 const SRC_PATH = path.resolve(ROOT_PATH, './src');
@@ -122,8 +124,53 @@ const commonConfig = {
                 to: './CNAME',
                 toType: 'file',
                 force: true
+            },
+            {
+                from: path.resolve(ROOT_PATH, 'service-worker-plugin.js'),
+                to: DIST_PATH
+            },
+        ]),
+        // service worker
+        new SwRegisterWebpackPlugin({
+            // 各种 option 参数
+            // prefix: '/'
+            filePath: path.resolve(ROOT_PATH, 'sw-register.js'),
+        }),
+        new SWPrecacheWebpackPlugin(
+            {
+              cacheId: 'app-cache',
+              // 生成的文件名称
+              filename: 'service-worker.js',
+              // 需缓存的文件配置, 可以逐项添加, 需动态缓存的放到runtimeCaching中处理
+              staticFileGlobs: [
+                // 'dist/index.html',
+                // 'dist/static/**/**.*'
+              ],
+              // webpack生成的静态资源全部缓存
+              mergeStaticsConfig: true,
+              // 忽略的文件
+              staticFileGlobsIgnorePatterns: [
+                /\.map$/ // map文件不需要缓存
+              ],
+              // 是否压缩，默认不压缩
+              minify: true,
+              importScripts: [
+                'service-worker-plugin.js'
+              ],
+              verbose: true,
+              runtimeCaching: [
+                {
+                    urlPattern: /demo\.md/,
+                    handler: 'networkFirst'
+                },
+              ]
+               // 当请求路径不在缓存里的返回，对于单页应用来说，入口点是一样的
+              //  navigateFallback: path.resolve(CONSTANTS.DIST_PATH, 'index.html'),
+              // 白名单包含所有的.html (for HTML imports) 和路径中含 `/data/`
+              // navigateFallbackWhitelist: [/^(?!.*\.html$|\/data\/).*/],
+              
             }
-        ])
+        ),
     ]
 };
 
