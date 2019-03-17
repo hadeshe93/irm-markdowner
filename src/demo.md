@@ -9,10 +9,11 @@ GitHub 地址：[https://github.com/ironmaxtory/wechat-markdowner](https://githu
 - 代码长度溢出时横向滚动
 - 支持 Webpack 调试
 - 仅支持一层的 ul 和 ol，因为微信编辑器也不支持多层的列表
-- 新增 Material Dark 代码样式主题<sup style="color:#e4393c;">New</sup>
-- 支持 emoji 表情<sup style="color:#e4393c;">New</sup>
-- 图片支持自定义尺寸<sup style="color:#e4393c;">New</sup>
+- 新增 Material Dark 代码样式主题
+- 支持 emoji 表情
+- 图片支持自定义尺寸
 - 支持带警告样式的 blockquote<sup style="color:#e4393c;">New</sup>
+- 支持 PWA，只要访问过一次，则离线可用！<sup style="color:#e4393c;">New</sup>
 
 ## Blockquote
 ```!
