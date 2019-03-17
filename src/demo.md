@@ -11,6 +11,13 @@ GitHub 地址：[https://github.com/ironmaxtory/wechat-markdowner](https://githu
 - 仅支持一层的 ul 和 ol，因为微信编辑器也不支持多层的列表
 - 新增 Material Dark 代码样式主题<sup style="color:#e4393c;">New</sup>
 - 支持 emoji 表情<sup style="color:#e4393c;">New</sup>
+- 图片支持自定义尺寸<sup style="color:#e4393c;">New</sup>
+- 支持带警告样式的 blockquote<sup style="color:#e4393c;">New</sup>
+
+## Blockquote
+```!
+带警告样式的 blockquote
+```
 
 ## 列表嵌套
 1. lorem
