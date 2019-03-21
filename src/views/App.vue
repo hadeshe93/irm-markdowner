@@ -71,25 +71,12 @@
       <!-- 预览框 END -->
     </div>
     <!-- 操作框 END -->
-
-    <!-- 编辑框 START -->
-    <!-- <div class="input-wrapper" v-show="status === APP_STATUS.EDIT">
-      <textarea id="input" spellcheck="false" v-model="editorContent"
-        @input="editorContentChangedHandler(editorContent)"></textarea>
-    </div> -->
-    <!-- 编辑框 END -->
-
-    <!-- 预览框 START -->
-    <!-- <div class="output-wrapper" v-show="status === APP_STATUS.PREVIEW">
-      <div id="output" v-html="previewContent"></div>
-    </div> -->
-    <!-- 预览框 END -->
   </div>
 </template>
 
 <script>
   import Vue from 'vue';
-  import _function from 'lodash/function';
+  import utils from '@ASSETS/scripts/utils'
   import imgQrcodeScan from '@ASSETS/imgs/qrcode_scan.png';
   // markdown 转换器
   import converter from '@SRC/plugins/converter';
@@ -166,7 +153,7 @@
       },
       // 获取滚动回调的节流函数
       getScrollThrottleHandler () {
-        return _function.throttle((target) => {
+        return utils.throttle((target) => {
           const targetID = target.getAttribute('id');
           const scrollPercent = target.scrollTop / (target.scrollHeight - target.clientHeight);
           let destScrollTop = 0;
@@ -190,10 +177,7 @@
                 }, 500);
               break;
           }
-        }, 16, {
-          leading: true,
-          trailing: true
-        });
+        }, 16);
       },
       // 切换状态
       toggleAppStatus (status) {
@@ -228,14 +212,6 @@
         const demo = rsp.data;
         this.editorContent = demo;
       });
-    },
-    updated () {
-      // const ulElms = document.querySelectorAll('#output > ul');
-      // const olElms = document.querySelectorAll('#output > ol');
-      // let ulWrapper = document.createElement('section');
-      // let olWrapper = document.createElement('section');
-      // if (ulElms.length > 0) {
-      // }
     },
     mounted () {
       this.editorElm = this.$refs['input'];
