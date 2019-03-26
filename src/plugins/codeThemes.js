@@ -4,8 +4,7 @@ class CodeThemes {
             theme: 'github',
             id: 'codeThemeId',
         };
-        const PATH_STYLE_ID = 'PATCH_STYLE_ID';
-
+        
         this.options = {
             ...DEFAULT_OPTIONS,
             ...options,

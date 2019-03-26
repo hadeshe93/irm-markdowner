@@ -4,19 +4,15 @@
     <!-- <div class="topheader overflow-hidden"> -->
     <div class="topheader ">
       <a href="//md.ironmaxi.com" class="title-link left">
-        <h1 class="title">IRM Markdowner | <span>沉浸式写作</span> 📝</h1>
+        <h1 class="title">IRM Markdowner | <span>微信排版编辑器</span> 📝</h1>
       </a>
       <ul class="nav right">
         <li class="nav-item" @mouseover="tipShowed = true" @mouseleave="tipShowed = false">
           <a href="javascript:void(0);">关注傻蛋何发发 👏</a>
-          <!-- <a href="https://blog.ironmaxi.com">关注傻蛋何发发</a> -->
         </li>
         <li class="nav-item">
           <a href="https://github.com/hadeshe93/irm-markdowner" target="_blank">给个Star ⭐️</a>
         </li>
-        <!-- <li class="nav-item">
-          <a href="https://github.com/hadeshe93/irm-markdowner/issues/new" target="_blank">提需求</a>
-        </li> -->
         <li class="nav-item" style="position: relative;" v-if="false">
           <iframe allowtransparency="true" frameborder="0" scrolling="0" width="90px" height="20px" class="github-star"
             src="http://ghbtns.com/github-btn.html?user=hadeshe93&amp;repo=irm-markdowner&amp;type=watch&amp;count=true&amp;size=middle"></iframe>

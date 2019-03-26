@@ -87,7 +87,6 @@
   }
 
   var html = document.documentElement;
-  html.style="display: none";
   excuteResponsive({});
-  html.style="";
+  html.style="visibility: visible;";
 })();

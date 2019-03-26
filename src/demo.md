@@ -2,7 +2,7 @@
 
 GitHub 地址：[https://github.com/ironmaxtory/wechat-markdowner](https://github.com/ironmaxtory/wechat-markdowner)
 
-> 使用微信公众号编辑器有一个十分头疼的问题——粘贴出来的代码，格式错乱，而且特别丑。这块编辑器能够解决这个问题。
+> 使用微信公众号编辑器有一个十分头疼的问题——粘贴出来的代码，格式错乱，而且特别丑。这款编辑器能够解决这个问题。
 
 ## Features
 - 支持不同代码样式主题
@@ -12,7 +12,7 @@ GitHub 地址：[https://github.com/ironmaxtory/wechat-markdowner](https://githu
 - 新增 Material Dark 代码样式主题
 - 支持 emoji 表情
 - 图片支持自定义尺寸
-- 支持带警告样式的 blockquote<sup style="color:#e4393c;">New</sup>
+- 支持 3 种样式的 blockquote<sup style="color:#e4393c;">New</sup>
 - 支持 PWA，只要访问过一次，则离线可用！<sup style="color:#e4393c;">New</sup>
 
 ## Blockquote
