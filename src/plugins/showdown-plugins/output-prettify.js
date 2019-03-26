@@ -1,6 +1,6 @@
 import showdown from 'showdown';
 
-showdown.extension('prettify', function () {
+showdown.extension('output-prettify', function () {
   return [{
     type:   'output',
     filter: function (source) {
@@ -43,20 +43,7 @@ showdown.extension('prettify', function () {
         }
       });
 
-      // source = '<section class="article-wrapper">' + source + '</section>';
-
-      // 仅支持一层
-      // source = source.replace(/<ul>([\s\S]*)<\/ul>/gi, function (match, pre) {
-      //   if(pre){
-      //     return pre;
-      //   }
-      // });
-      // source = source.replace(/<li>(.*)<\/li>/gi, function (match, pre) {
-      //   if(pre){
-      //     return '<p class="list-item"><span class="list-item-prefix"></span>' + pre + '</p>';
-      //   }
-      // });
-
+      // 给所有的 pre 和 code 元素加上 prettyprint 样式，让其能被 google/code-prettify 插件自动高亮
       source = source.replace(/(<pre[^>]*>)?[\n\s]?<code([^>]*)>/gi, function (match, pre, codeClass) {
         if (pre) {
           return '<pre class="prettyprint linenums" style="font-size:12px;"><code' + codeClass + ' style="font-size:12px;">';
@@ -65,8 +52,8 @@ showdown.extension('prettify', function () {
         }
       });
 
+      // 给 pre 里面的内容加一层父容器
       source = source.replace(/<pre([^>]*)>([\s\S]*?)<\/pre>/gi, function (match, preClass, content) {
-        console.log(arguments);
         return '<pre '+ preClass +'><section class="pre-content">'+ content +'</section></pre>';
       });
 
@@ -75,15 +62,3 @@ showdown.extension('prettify', function () {
   }];
 });
 
-// 警告组件
-showdown.extension('widget-blockquote-warn', function () {
-  return [{
-    type: 'language',
-    filter (source) {
-      source = source.replace(/```!([\s\S]*?)```/, function (match, content) {
-        return '<blockquote class="danger">' + content + '</blockquote>'
-      });
-      return source;
-    },
-  }];
-});

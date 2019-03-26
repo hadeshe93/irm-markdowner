@@ -79,7 +79,7 @@
   import utils from '@ASSETS/scripts/utils'
   import imgQrcodeScan from '@ASSETS/imgs/qrcode_scan.png';
   // markdown 转换器
-  import converter from '@SRC/plugins/converter';
+  import converter from '@SRC/plugins/showdown-converter';
   import codeThemes from '@SRC/plugins/codeThemes';
   import '@ASSETS/scripts/google-code-prettify/run_prettify';
   // 剪贴板

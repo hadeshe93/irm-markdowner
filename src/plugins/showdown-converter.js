@@ -1,12 +1,14 @@
 import showdown from 'showdown';
-import './showdown-prettify';
+import './showdown-plugins/output-prettify';
+import './showdown-plugins/language-blockquote';
 
 const converter = new showdown.Converter({
     /**
      * 扩展
      */
     extensions: [
-        'prettify', 'widget-blockquote-warn'
+        'output-prettify', 
+        'language-blockquote'
     ],
     /**
      * Enable support for setting image dimensions from within markdown syntax

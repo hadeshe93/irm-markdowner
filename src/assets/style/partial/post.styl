@@ -172,10 +172,24 @@ postContentStyle() {
             margin: 0;
         }
     }
-
+    .blockquote-title {
+        font-weight: bold;
+    }
+    blockquote.tip {
+        border-left-color: $color-primary;
+    }
+    blockquote.warn {
+        border-left-color: $color-warn;
+        color: $color-warn-text;
+        background: $color-warn-bkg;
+    }
     blockquote.danger {
         border-left-color: $color-danger;
-        color: $color-danger;
+        color: $color-danger-text;
+        background: $color-danger-bkg;
+    }
+    blockquote.tip,
+    blockquote.danger {
         // position: relative;
         &>.mark {
             margin: 0;
@@ -200,6 +214,7 @@ postContentStyle() {
 postCodeStyle() {
     pre.prettyprint.prettyprinted {
         border: none;
+        border-radius: 3px;
         -webkit-overflow-scrolling: touch;
         white-space: pre;
         letter-spacing: 0px !important;

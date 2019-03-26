@@ -16,9 +16,29 @@ GitHub 地址：[https://github.com/ironmaxtory/wechat-markdowner](https://githu
 - 支持 PWA，只要访问过一次，则离线可用！<sup style="color:#e4393c;">New</sup>
 
 ## Blockquote
-```!
-带警告样式的 blockquote
-```
+::: tip
+提示文案
+:::
+
+::: tip 提示
+提示文案
+:::
+
+::: warn
+提示文案
+:::
+
+::: warn 警告
+提示文案
+:::
+
+::: danger
+提示文案
+:::
+
+::: danger 危险
+提示文案
+:::
 
 ## 列表嵌套
 1. lorem
