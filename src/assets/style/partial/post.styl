@@ -73,6 +73,14 @@ postContentStyle() {
         font-family: $font-family;
     }
 
+    hr {
+        border: 0.5px solid $color-border;
+        margin: 0 auto;
+        margin: 40px 0 24px;
+        transform-origin: center;
+        transform: scaleX(0.5);
+    }
+
     section {
         margin: 0 0 20px;
     }
@@ -81,6 +89,7 @@ postContentStyle() {
     }
 
     img {
+        max-width: 100%;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     }
