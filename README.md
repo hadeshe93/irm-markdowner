@@ -1,6 +1,6 @@
 # 微信公众号排版编辑器
 
-[![pipeline status](https://gitlab.com/ironmaxtory/irm-markdowner/badges/master/pipeline.svg)](https://gitlab.com/ironmaxtory/irm-markdowner/commits/master)
+<!-- [![pipeline status](https://gitlab.com/ironmaxtory/irm-markdowner/badges/master/pipeline.svg)](https://gitlab.com/ironmaxtory/irm-markdowner/commits/master) -->
 
 一个离线也能用的，交互更友好的，微信公众号排版编辑器。
 
