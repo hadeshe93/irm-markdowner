@@ -119,13 +119,6 @@ const commonConfig = {
                 force: true
             },
             {
-                context: SRC_PATH,
-                from: "CNAME",
-                to: './CNAME',
-                toType: 'file',
-                force: true
-            },
-            {
                 from: path.resolve(ROOT_PATH, 'service-worker-plugin.js'),
                 to: DIST_PATH
             },

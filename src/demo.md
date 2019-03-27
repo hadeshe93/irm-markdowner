@@ -118,9 +118,4 @@ echo 'hello,world'
 | 程序猿 | 1   | handsome |
 | 程序媛 | 1   | beautiful |
 
-## 关于何大叔
-<!-- ![微信公众号](http://cdn.ironmaxi.com/images/wechat/qrcode_300x300.png) -->
-<p style="text-align:center;">
-    <img width="200" src="https://cdn.ironmaxi.com/images/upload/qrcode_2018.png" alt="微信公众号"/>
-</p>
----
+

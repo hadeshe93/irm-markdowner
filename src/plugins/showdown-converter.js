@@ -1,5 +1,6 @@
 import showdown from 'showdown';
 import './showdown-plugins/output-prettify';
+import './showdown-plugins/output-wechat-tail';
 import './showdown-plugins/language-blockquote';
 
 const converter = new showdown.Converter({
@@ -8,6 +9,7 @@ const converter = new showdown.Converter({
      */
     extensions: [
         'output-prettify', 
+        'output-wechat-tail', 
         'language-blockquote'
     ],
     /**

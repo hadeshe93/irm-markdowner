@@ -1,6 +1,6 @@
 import showdown from 'showdown';
 
-// 警告组件
+// blockquote 组件
 showdown.extension('language-blockquote', function () {
     return [{
       type: 'language',
