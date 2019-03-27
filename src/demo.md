@@ -83,8 +83,6 @@ Aliqua aliqua id pariatur officia ipsum est. Ipsum velit irure exercitation moll
 </template>
 ```
 
----
-
 `css`代码：
 ```css
 .title {
@@ -92,8 +90,6 @@ Aliqua aliqua id pariatur officia ipsum est. Ipsum velit irure exercitation moll
     font-size: 20px;
 }
 ```
-
----
 
 `js`代码：
 ```javascript
@@ -103,7 +99,6 @@ function sayHelloWorld (name) {
 
 sayHelloWorld('Frank');
 ```
----
 
 `php`代码：
 
