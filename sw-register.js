@@ -35,7 +35,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('/service-worker.js'
             // `;
             /* eslint-enable max-len */
 
-            window.weui.confirm('已更新最新版本，是否立即刷新？', {
+            weui.confirm('已更新最新版本，是否立即刷新？', {
                  title: '更新提示',
                  buttons: [{
                     label: '暂不',
@@ -44,7 +44,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('/service-worker.js'
                  }, {
                     label: '确认',
                     type: 'primary',
-                    onClick: function(){ window.location.reload(); }
+                    onClick: function(){ location.reload(); }
                  }],
             });
             // document.body.appendChild(dom);
