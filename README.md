@@ -12,9 +12,9 @@
 
 新版访问地址：[https://md.ironmax.com](https://md.ironmax.com)
 
-新版界面：![新版界面](https://cdn.ironmaxi.com/images/upload/20190327112803.jpg)
+新版界面：![新版界面](docs/20190327112803.jpg)
 
-操作效果：![操作效果](https://cdn.ironmaxi.com/images/upload/20190327145500.gif)
+操作效果：![操作效果](docs/20190327145500.gif)
 
 大体介绍一下，我在原项目的基础上做了什么工作：  
 + [x] 🛠 添加调试模式，支持本地调试；
@@ -33,7 +33,7 @@
 好用的话，不妨给个 Star 🌟 ！
 
 ## 关于我
-<img width="200" src="https://cdn.ironmaxi.com/images/upload/qrcode_2018.png" alt="微信公众号"/>
+<img width="200" src="docs/qrcode_2018.png" alt="微信公众号"/>
 
 ## LICENSE
 MIT. 感谢 [@Phodal](https://github.com/phodal) & [@barretlee](https://github.com/barretlee).
