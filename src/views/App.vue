@@ -32,8 +32,8 @@
         <div class="themes-group">
           <div class="theme-wrapper">
             <label>代码主题选择：</label>
-            <select class="code-theme" v-model="codeTheme" 
-              @change="codeThemeChangedHandler(codeTheme)">
+            <select class="code-theme" v-model="appSettings.codeTheme" 
+              @change="codeThemeChangedHandler(appSettings.codeTheme)">
               <option v-for="(theme, idx) in CODE_THEMES" :key="idx" :value="theme">
                 {{ theme }}
               </option>
@@ -77,6 +77,7 @@
   // markdown 转换器
   import converter from '@SRC/plugins/showdown-converter';
   import codeThemes from '@SRC/plugins/codeThemes';
+  import lcStorage from '@SRC/plugins/lcStorage';
   import '@ASSETS/scripts/google-code-prettify/run_prettify';
   // 剪贴板
   import Clipboard from 'clipboard';
@@ -91,13 +92,12 @@
   // 代码主题改变器
   let codeThemeChanger = null;
 
-  // 应用的当前状态
-  const APP_STATUS = {
-    // 编辑状态
-    EDIT: {},
-    // 预览状态
-    PREVIEW: {}
+  // 默认的 APP 设置
+  const DEFAULT_APP_SETTINGS = {
+    codeTheme: 'material-dark',
   };
+
+  const APP_LC_KEY = 'appSettings';
 
   export default {
     name: "app",
@@ -120,11 +120,9 @@
         isEditorScrollLocked: false,
         isPreviewScrollLocked: false,
 
-        // 默认主题
-        codeTheme: 'material-dark',
-
-        APP_STATUS,
-        status: APP_STATUS.EDIT,
+        appSettings: {
+          ...DEFAULT_APP_SETTINGS
+        },
 
         tipShowed: false,
       };
@@ -175,13 +173,10 @@
           }
         }, 16);
       },
-      // 切换状态
-      toggleAppStatus (status) {
-        this.status = status;
-      },
       // 代码主题改变回调
       codeThemeChangedHandler (codeTheme) {
         codeThemeChanger.update(codeTheme);
+        lcStorage.set(APP_LC_KEY, this.appSettings);
       },
       // 编辑器内容变化回调
       editorContentChangedHandler (editorContent) {
@@ -200,6 +195,14 @@
       },
     },
     created () {
+      // 读取缓存配置
+      let appSettings = lcStorage.get(APP_LC_KEY);
+      this.appSettings = {
+        ...DEFAULT_APP_SETTINGS,
+        ...appSettings
+      };
+       
+      
       this.$http.get('./demo.md', {
         // 由于采用了 pwa，所以不要做这个了
         // params: { _t: +new Date() },
@@ -215,7 +218,7 @@
 
       codeThemeChanger = new codeThemes({
         prefixUrl: './themes/',
-        theme: this.codeTheme,
+        theme: this.appSettings.codeTheme,
       });
 
       clipboard = new Clipboard(this.$refs['clipboarddBtn']);
