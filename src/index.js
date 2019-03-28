@@ -2,7 +2,6 @@ import 'weui';
 import '@ASSETS/style/index.styl';
 
 import Vue from 'vue';
-import weui from 'weui.js';
 import App from '@SRC/views/App.vue';
 import http from '@SRC/plugins/http';
 
@@ -13,7 +12,7 @@ if (/\.ironmaxi\.com$/.test(location.hostname)) {
 
 // 原型注入
 Vue.prototype.$http = http;
-Vue.prototype.$weui = weui;
+Vue.prototype.$weui = window.weui;
 
 const appElm = document.getElementById('app');
 

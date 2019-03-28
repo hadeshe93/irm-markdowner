@@ -13,6 +13,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const ROOT_PATH = path.resolve(__dirname, '../');
 const SRC_PATH = path.resolve(ROOT_PATH, './src');
 const DIST_PATH = path.resolve(ROOT_PATH, './md');
+const NODE_MODULES_PATH = path.resolve(ROOT_PATH, './node_modules');
 const ASSETS_PATH = path.resolve(SRC_PATH, './assets');
 const VIEWS_PATH = path.resolve(SRC_PATH, './views');
 const COMPONENTS_PATH = path.resolve(SRC_PATH, './components');
@@ -23,6 +24,7 @@ const commonConfig = {
     //页面入口文件配置
     entry: {
         responsive: path.resolve(ASSETS_PATH, 'scripts/responsive.js'),
+        // weuijs: path.resolve(NODE_MODULES_PATH, 'weui.js/dist/weui.min.js'),
         index: path.resolve(SRC_PATH, 'index.js'),
     },
     resolve: {
